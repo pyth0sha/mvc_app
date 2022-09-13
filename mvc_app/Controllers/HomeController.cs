@@ -49,6 +49,7 @@ namespace mvc_app.Controllers
             return NotFound();
         }
 
+        [Authorize(Roles="admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id != null)
