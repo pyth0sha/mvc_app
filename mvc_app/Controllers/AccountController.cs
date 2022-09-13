@@ -7,6 +7,7 @@ using mvc_app.ViewModels; // пространство имен моделей Re
 using mvc_app.Models; // пространство имен UserContext и класса User
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using System;
 
 namespace mvc_app.Controllers
 {
@@ -28,7 +29,8 @@ namespace mvc_app.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
+                User user = await db.Users.Include(u => u.Role)
+                    .FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
                 if (user != null)
                 {
                     await Authenticate(user); // аутентификация
@@ -51,10 +53,17 @@ namespace mvc_app.Controllers
             if (ModelState.IsValid)
             {
                 User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+                Console.WriteLine("Новый пользователь: {0}",user.Email);
                 if (user == null)
                 {
                     // добавляем пользователя в бд
-                    db.Users.Add(new User { Name = model.Name, Age = model.Age, Email = model.Email, Password = model.Password }); ;
+                    user = new User{ Name = model.Name, Age = model.Age, Email = model.Email, Password = model.Password };
+                    Role userRole = await db.Roles.FirstOrDefaultAsync(r => r.Name == "user");
+                    if (userRole != null)
+                        user.Role = userRole;
+
+                    db.Users.Add(user);
+
                     await db.SaveChangesAsync();
 
                     await Authenticate(user); // аутентификация
@@ -76,12 +85,13 @@ namespace mvc_app.Controllers
                 new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role?.Name)
             };
             // создаем объект ClaimsIdentity
-            ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+            ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType,
+                ClaimsIdentity.DefaultRoleClaimType);
             // установка аутентификационных куки
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
 
-        public async Task<IActionResult> Logout()
+            public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Account");
