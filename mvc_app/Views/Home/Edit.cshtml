@@ -1,6 +1,7 @@
 ﻿@model mvc_app.Models.User
 @{
     ViewBag.Title = "Редактирование пользователя";
+    ViewBag.Name = Model.Name;
 }
 <form asp-action="edit" asp-controller="home" asp-route-id="@Model.Id">
     <div class="form-group">
