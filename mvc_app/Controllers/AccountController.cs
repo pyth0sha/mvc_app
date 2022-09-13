@@ -53,14 +53,15 @@ namespace mvc_app.Controllers
             if (ModelState.IsValid)
             {
                 User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
-                Console.WriteLine("Новый пользователь: {0}",user.Email);
+                //Console.WriteLine("Новый пользователь: {0}",user.Email);
                 if (user == null)
                 {
                     // добавляем пользователя в бд
-                    user = new User{ Name = model.Name, Age = model.Age, Email = model.Email, Password = model.Password };
+                    user = new User{ Email = model.Email, Password = model.Password };
                     Role userRole = await db.Roles.FirstOrDefaultAsync(r => r.Name == "user");
                     if (userRole != null)
                         user.Role = userRole;
+                        user.RoleId = userRole.Id;
 
                     db.Users.Add(user);
 

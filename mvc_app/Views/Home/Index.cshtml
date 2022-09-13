@@ -9,7 +9,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.Name</td>
+            <td>@item.Email</td>
             <td>
                 <a asp-action="Details" asp-controller="Home" asp-route-id="@item.Id">Подробнее</a> |
                 <a asp-action="Edit" asp-controller="Home" asp-route-id="@item.Id">Изменить</a> |

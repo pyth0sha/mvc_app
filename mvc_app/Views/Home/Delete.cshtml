@@ -1,19 +1,18 @@
 ﻿@model mvc_app.Models.User
 @{
     ViewBag.Title = "Удаление пользователя";
-    ViewBag.Name = Model.Name;
 }
 
 <div>
     <dl class="dl-horizontal">
-        <dt>Имя</dt>
+        
+        <dt>Email</dt>
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Email)
         </dd>
-
-        <dt>Возраст</dt>
+        <dt>Пароль</dt>
         <dd>
-            @Html.DisplayFor(model => model.Age)
+            @Html.DisplayFor(model => model.Password)
         </dd>
     </dl>
 

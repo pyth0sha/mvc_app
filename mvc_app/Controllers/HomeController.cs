@@ -22,8 +22,13 @@ namespace mvc_app.Controllers
         }
 
         [AllowAnonymous]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
+            if (id != null) 
+            { 
+                User user = await db.Users.FirstOrDefaultAsync(p => p.Id == id);
+                ViewBag.Name = user.Email;
+            }
             return View(await db.Users.ToListAsync());
         }
         public IActionResult Create()
