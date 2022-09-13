@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace mvc_app.Controllers
 {
+    [Authorize]
+
     public class HomeController : Controller
     {
         private ApplicationContext db;
@@ -19,7 +21,7 @@ namespace mvc_app.Controllers
             db = context;
         }
 
-        [Authorize]
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await db.Users.ToListAsync());
