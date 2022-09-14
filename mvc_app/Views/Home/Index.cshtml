@@ -3,13 +3,14 @@
     ViewBag.Title = "Все пользователи";
 }
 <a asp-action="Create">Добавить пользователя</a>
+
 <a asp-action="Logout" asp-controller="Account">Выход</a>
 <table class="table">
     <tr><td>Имя</td><td>Действия</td></tr>
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.Email</td>
+            <td>@item.Number</td>
             <td>
                 <a asp-action="Details" asp-controller="Home" asp-route-id="@item.Id">Подробнее</a> |
                 <a asp-action="Edit" asp-controller="Home" asp-route-id="@item.Id">Изменить</a> |

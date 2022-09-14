@@ -1,16 +1,15 @@
 ﻿@model mvc_app.Models.User
 @{
-    ViewBag.Title = Model.Email;
-    ViewBag.Name = Model.Email;
+    ViewBag.Title = Model.Number;
 }
-<h2>Пользователь @Model.Email</h2>
+<h2>Пользователь @Model.Number</h2>
 <div>
     <dl class="dl-horizontal">
         <dt>Идентификатор</dt>
         <dd>@Model.Id</dd>
 
-        <dt>Email</dt>
-        <dd>@Model.Email</dd>
+        <dt>Номер</dt>
+        <dd>@Model.Number</dd>
 
         <dt>Пароль</dt>
         <dd>@Model.Password</dd>

@@ -30,12 +30,12 @@ namespace mvc_app.Controllers
             if (ModelState.IsValid)
             {
                 User user = await db.Users.Include(u => u.Role)
-                    .FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
+                    .FirstOrDefaultAsync(u => u.Number == model.Number && u.Password == model.Password);
                 if (user != null)
                 {
                     await Authenticate(user); // аутентификация
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home", new { id = user.Id });
                 }
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
             }
@@ -52,12 +52,12 @@ namespace mvc_app.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+                User user = await db.Users.FirstOrDefaultAsync(u => u.Number == model.Number);
                 //Console.WriteLine("Новый пользователь: {0}",user.Email);
                 if (user == null)
                 {
                     // добавляем пользователя в бд
-                    user = new User { Email = model.Email, Password = model.Password };
+                    user = new User { Number = model.Number, Password = model.Password };
                     Role userRole = await db.Roles.FirstOrDefaultAsync(r => r.Name == "user");
                     if (userRole != null) 
                     { 
@@ -71,7 +71,7 @@ namespace mvc_app.Controllers
 
                     await Authenticate(user); // аутентификация
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home", new {id = user.Id});
                 }
                 else
                     ModelState.AddModelError("", "Некорректные логин и(или) пароль");
@@ -84,7 +84,7 @@ namespace mvc_app.Controllers
             // создаем один claim
             var claims = new List<Claim>
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
+                new Claim(ClaimsIdentity.DefaultNameClaimType, user.Number),
                 new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role?.Name)
             };
             // создаем объект ClaimsIdentity
