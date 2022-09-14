@@ -35,7 +35,12 @@ namespace mvc_app.Controllers
                 {
                     await Authenticate(user); // аутентификация
 
-                    return RedirectToAction("Index", "Home", new { id = user.Id });
+                    if (user.Role == await db.Roles.FirstOrDefaultAsync(r => r.Name == "admin"))
+                    {
+                        return RedirectToAction("UserList", "Admin");
+                    }
+                    else
+                        return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
             }
@@ -71,7 +76,7 @@ namespace mvc_app.Controllers
 
                     await Authenticate(user); // аутентификация
 
-                    return RedirectToAction("Index", "Home", new {id = user.Id});
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                     ModelState.AddModelError("", "Некорректные логин и(или) пароль");

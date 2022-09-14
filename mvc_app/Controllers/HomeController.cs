@@ -22,28 +22,12 @@ namespace mvc_app.Controllers
         }
 
         //[AllowAnonymous]
-        public async Task<IActionResult> Index(int? id)
+        public async Task<IActionResult> Index()
         {
-            if (id != null) 
-            { 
-                User user = await db.Users.FirstOrDefaultAsync(p => p.Id == id);
-                ViewBag.Name = user.Number;
-            }
             return View(await db.Users.ToListAsync());
         }
 
-        public IActionResult Create()
-        {
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> Create(User user)
-        {
-            db.Users.Add(user);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
-
+        
         public async Task<IActionResult> Details(int? id)
         {
             if (id != null)
@@ -52,51 +36,6 @@ namespace mvc_app.Controllers
                 ViewBag.Name = user.Number;
                 if (user != null)
                     return View(user);
-            }
-            return NotFound();
-        }
-
-        [Authorize(Roles="admin")]
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id != null)
-            {
-                User user = await db.Users.FirstOrDefaultAsync(p => p.Id == id);
-                if (user != null)
-                    return View(user);
-            }
-            return NotFound();
-        }
-        [HttpPost]
-        public async Task<IActionResult> Edit(User user)
-        {
-            db.Users.Update(user);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
-
-        [HttpGet]
-        [ActionName("Delete")]
-        public async Task<IActionResult> ConfirmDelete(int? id)
-        {
-            if (id != null)
-            {
-                User user = await db.Users.FirstOrDefaultAsync(p => p.Id == id);
-                if (user != null)
-                    return View(user);
-            }
-            return NotFound();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id != null)
-            {
-                User user = new User { Id = id.Value };
-                db.Entry(user).State = EntityState.Deleted;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
             }
             return NotFound();
         }
