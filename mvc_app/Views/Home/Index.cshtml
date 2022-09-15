@@ -1,21 +1,15 @@
-﻿@model IEnumerable<mvc_app.Models.User>
+﻿@model IEnumerable<mvc_app.Models.Department>
 @{
-    ViewBag.Title = "Все пользователи";
+    ViewBag.Title = "Отделы";
 }
-<a asp-action="Create">Добавить пользователя</a>
 
-<a asp-action="Logout" asp-controller="Account">Выход</a>
 <table class="table">
-    <tr>
-        <td>Имя</td>
-        <td>Действия</td>
-    </tr>
+    <tr><th>Отделы</th></tr>
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.Number</td>
             <td>
-                <a asp-action="Details" asp-controller="Home" asp-route-id="@item.Id">Подробнее</a>
+                <a asp-action="Department" asp-controller="Home" asp-route-id="@item.Id">Отдел @item.Name</a>
             </td>
         </tr>
     }

@@ -19,6 +19,38 @@ namespace mvc_app.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("mvc_app.Models.Department", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Departments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "первый"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "второй"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "третий"
+                        });
+                });
+
             modelBuilder.Entity("mvc_app.Models.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -46,6 +78,46 @@ namespace mvc_app.Migrations
                         });
                 });
 
+            modelBuilder.Entity("mvc_app.Models.Shop", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.ToTable("Shops");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DepartmentId = 1,
+                            Number = "101"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DepartmentId = 2,
+                            Number = "201"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DepartmentId = 2,
+                            Number = "301"
+                        });
+                });
+
             modelBuilder.Entity("mvc_app.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -53,13 +125,7 @@ namespace mvc_app.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
+                    b.Property<string>("Number")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
@@ -78,11 +144,26 @@ namespace mvc_app.Migrations
                         new
                         {
                             Id = 1,
-                            Age = 0,
-                            Email = "admin@mail.ru",
+                            Number = "u55220",
                             Password = "123456",
                             RoleId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Number = "u12345",
+                            Password = "123",
+                            RoleId = 2
                         });
+                });
+
+            modelBuilder.Entity("mvc_app.Models.Shop", b =>
+                {
+                    b.HasOne("mvc_app.Models.Department", "Department")
+                        .WithMany("Shops")
+                        .HasForeignKey("DepartmentId");
+
+                    b.Navigation("Department");
                 });
 
             modelBuilder.Entity("mvc_app.Models.User", b =>
@@ -92,6 +173,11 @@ namespace mvc_app.Migrations
                         .HasForeignKey("RoleId");
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("mvc_app.Models.Department", b =>
+                {
+                    b.Navigation("Shops");
                 });
 
             modelBuilder.Entity("mvc_app.Models.Role", b =>

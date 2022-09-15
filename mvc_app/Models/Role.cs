@@ -2,6 +2,7 @@
 
 namespace mvc_app.Models
 {
+    // класс роли пользователя
     public class Role
     {
         public int Id { get; set; }

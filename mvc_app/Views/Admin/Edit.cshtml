@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "Редактирование пользователя";
-    ViewBag.Name = Model.Number;
 }
 <form asp-action="Edit" asp-controller="Admin" asp-route-id="@Model.Id">
     <div class="form-group">
@@ -14,9 +13,11 @@
         <input type="text" asp-for="Password" class="form-control" />
     </div>
     <div class="form-group">
-        <label asp-for="RoleId" class="control-label">Роль</label>
-        <input type="radio" id="admin" asp-for="RoleId" class="form-control" value="1" />1
-        <input type="radio" id="user" asp-for="RoleId" class="form-control" value="2" />2
+        <label asp-for="RoleId" for="role" class="control-label">Роль</label>
+        <select class="form-control" id="role" asp-for="RoleId">
+            <option value="1">admin</option>
+            <option value="2">user</option>
+        </select>
     </div>
     <div class="form-group">
         <input type="submit" value="Сохранить" class="btn btn-default" />

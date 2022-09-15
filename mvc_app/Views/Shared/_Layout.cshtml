@@ -1,5 +1,6 @@
 ﻿@{
-    var Role = "user";
+    if(ViewBag.Role == "Admin"){
+    }
 }
 
 <!DOCTYPE html>
@@ -15,7 +16,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@ViewBag.Role @User.Identity.Name</a>
+                <a class="navbar-brand">@ViewBag.Role @User.Identity.Name</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,13 +26,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
                         </li>
+                        @if(ViewBag.Role == "admin"){
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="UserList">Управление</a>
+                        </li>
+                        }
                     </ul>
                     @if(User.Identity.IsAuthenticated){
-                        <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Выйти</a>
+                        <a class="btn btn-primary" asp-controller="Account" asp-action="Logout">Выйти</a>
                     }
                     else
                     {
-                        <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Войти</a>
+                        <a class="btn btn-primary" asp-controller="Account" asp-action="Login">Войти</a>
                     }
                 </div>
             </div>
@@ -45,7 +51,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - mvc_app - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - mvc_app
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

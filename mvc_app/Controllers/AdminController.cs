@@ -16,7 +16,7 @@ namespace mvc_app.Controllers
         }
         public async Task<IActionResult> UserList()
         {
-            ViewBag.Role = "Admin";
+            ViewBag.Role = "admin";
             return View(await db.Users.ToListAsync());
         }
 

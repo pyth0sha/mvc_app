@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace mvc_app.Controllers
 {
-    [Authorize]
+    //[Authorize]
 
     public class HomeController : Controller
     {
@@ -24,20 +24,18 @@ namespace mvc_app.Controllers
         //[AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            return View(await db.Users.ToListAsync());
+            User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
+            Role role = await db.Roles.FirstOrDefaultAsync(p => p.Id == user.RoleId);
+            ViewBag.Role = role.Name;
+            //return View(await db.Users.ToListAsync());
+
+            return View(await db.Departments.ToListAsync());
         }
 
-        
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Department(int? id)
         {
-            if (id != null)
-            {
-                User user = await db.Users.FirstOrDefaultAsync(p => p.Id == id);
-                ViewBag.Name = user.Number;
-                if (user != null)
-                    return View(user);
-            }
-            return NotFound();
+            return View(await db.Departments.ToListAsync());
         }
+        
     }
 }
