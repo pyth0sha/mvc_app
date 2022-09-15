@@ -113,7 +113,7 @@ namespace mvc_app.Migrations
                         new
                         {
                             Id = 3,
-                            DepartmentId = 2,
+                            DepartmentId = 3,
                             Number = "301"
                         });
                 });

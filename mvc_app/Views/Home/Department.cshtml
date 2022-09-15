@@ -1,5 +1,16 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<mvc_app.Models.Shop>
 @{
+    ViewBag.Title = "Цеха";
 }
+
+<table class="table">
+    <tr><th>Цеха</th></tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a asp-action="Department" asp-controller="Home" asp-route-id="@item.Id">Цех @item.Number</a>
+            </td>
+        </tr>
+    }
+</table>

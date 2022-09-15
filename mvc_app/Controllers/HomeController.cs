@@ -25,8 +25,11 @@ namespace mvc_app.Controllers
         public async Task<IActionResult> Index()
         {
             User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
-            Role role = await db.Roles.FirstOrDefaultAsync(p => p.Id == user.RoleId);
-            ViewBag.Role = role.Name;
+            if (user != null) 
+            { 
+                Role role = await db.Roles.FirstOrDefaultAsync(p => p.Id == user.RoleId);
+                ViewBag.Role = role.Name; 
+            }
             //return View(await db.Users.ToListAsync());
 
             return View(await db.Departments.ToListAsync());
@@ -34,7 +37,14 @@ namespace mvc_app.Controllers
 
         public async Task<IActionResult> Department(int? id)
         {
-            return View(await db.Departments.ToListAsync());
+            if(id != null)
+            {
+                var shops = from s in db.Shops
+                            select s;
+                shops = shops.Where(p => p.DepartmentId == id);
+                return View(await shops.ToListAsync());
+            }
+            return NotFound();
         }
         
     }
