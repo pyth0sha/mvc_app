@@ -87,5 +87,10 @@ namespace mvc_app.Controllers
             }
             return NotFound();
         }
+
+        public async Task<IActionResult> Department()
+        {
+            return View(await db.Departments.ToListAsync());
+        }
     }
 }
