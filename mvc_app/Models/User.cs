@@ -3,6 +3,9 @@
     // класс пользователя
     public class User
     {
+        //TODO:
+        //[] добавить отношение к цеху
+        //
         public int Id { get; set; }
         //public string Name { get; set; }
         public string Number { get; set; } // u12345

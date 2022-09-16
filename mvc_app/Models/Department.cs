@@ -3,7 +3,7 @@
 namespace mvc_app.Models
 {
     // класс отдела
-    // [TODO]
+    // TODO:
     // [+] добавить отношение к цеху List<Shop>
     // [] 
     public class Department

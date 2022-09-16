@@ -32,18 +32,6 @@ namespace mvc_app.Controllers
             return RedirectToAction("UserList");
         }
 
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id != null)
-            {
-                User user = await db.Users.FirstOrDefaultAsync(p => p.Id == id);
-                ViewBag.Name = user.Number;
-                if (user != null)
-                    return View(user);
-            }
-            return NotFound();
-        }
-
         public async Task<IActionResult> Edit(int? id)
         {
             if (id != null)
