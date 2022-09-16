@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using mvc_app.Models;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace mvc_app.Controllers
 {
@@ -36,6 +38,8 @@ namespace mvc_app.Controllers
         {
             if (id != null)
             {
+                var shops = await db.Shops.ToListAsync();
+                ViewBag.Shops = new SelectList(shops, "Id", "Number");
                 User user = await db.Users.FirstOrDefaultAsync(p => p.Id == id);
                 if (user != null)
                     return View(user);

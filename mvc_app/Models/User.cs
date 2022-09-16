@@ -10,12 +10,11 @@
         //public string Name { get; set; }
         public string Number { get; set; } // u12345
         public string Password { get; set; }
+        
         public int? RoleId { get; set; }
-        public Role Role {
-            //get => Role.Name;
-            get;
-            set;
-        }
+        public Role Role { get; set; }
 
+        public int? ShopId {get; set;}
+        public Shop Shop {get; set;}
     }
 }
