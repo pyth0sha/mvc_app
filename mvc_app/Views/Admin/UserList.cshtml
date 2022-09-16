@@ -3,7 +3,7 @@
     ViewBag.Title = "Admin site";
 }
 <a asp-action="Create">Добавить пользователя</a>
-
+<!-- <p>@ViewBag.Roles</p> -->
 <table class="table table-stripped">
     <thead>
         <tr>
@@ -17,11 +17,12 @@
     <tbody>
     @foreach (var item in Model)
     {
+
         <tr>
             <td>@item.Number</td>
-            <td>@item.RoleId</td>
+            <td>@item.Role.Name</td>
             <td>@item.Password</td>
-            <td>@item.ShopId</td>
+            <td>@item.Shop.Number</td>
             <td>
                 <div class="btn-group" role="group">
                     

@@ -18,12 +18,15 @@ namespace mvc_app.Controllers
         }
         public async Task<IActionResult> UserList()
         {
-            ViewBag.Role = "admin";
+            ViewBag.Roles = await db.Roles.ToListAsync();
+            ViewBag.Shops = await db.Shops.ToListAsync();
             return View(await db.Users.ToListAsync());
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var shops = await db.Shops.ToListAsync();
+            ViewBag.Shops = new SelectList(shops, "Id", "Number");
             return View();
         }
         [HttpPost]

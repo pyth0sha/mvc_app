@@ -20,6 +20,11 @@
         </select>
     </div>
     <div class="form-group">
-        <input type="submit" value="Отправить" class="btn btn-default" />
+        <label asp-for="ShopId" for="shop" class="control-label">Цех</label>
+        <select class="form-control" id="shop" asp-for="ShopId" asp-items="ViewBag.Shops">
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-light" />
     </div>
 </form>
