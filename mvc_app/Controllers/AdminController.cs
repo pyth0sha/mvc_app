@@ -42,7 +42,6 @@ namespace mvc_app.Controllers
         {
             var CurrentUser = User.Identity.Name;
             _logger.LogInformation("Admin.Create method called\nUser: {0}", CurrentUser);
-            // new user Id starts from 1007 now, but why???
             _logger.LogInformation("Adding new user: {0} {1} {2}", user.Number, user.Id, user.RoleId);
             db.Users.Add(user);
             await db.SaveChangesAsync();
