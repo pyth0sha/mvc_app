@@ -116,7 +116,7 @@ namespace mvc_app.Controllers
                 await db.SaveChangesAsync();
                 
                 _logger.LogInformation("Deleted user with id {0}", id);
-                return RedirectToAction("UserList");   
+                return RedirectToAction("RoleList");   
             }
             return NotFound();
         }
@@ -143,6 +143,38 @@ namespace mvc_app.Controllers
         {
             ViewBag.Role = "admin";
             return View(await db.Roles.ToListAsync());
+        }
+
+        [HttpGet]
+        [ActionName("DeleteRole")]
+        public async Task<IActionResult> ConfirmDeleteRole(int? id)
+        {
+            var CurrentUser = User.Identity.Name;
+            _logger.LogInformation("Admin.ConfirmDeleteRole method called\nUser: {0}", CurrentUser);
+            if (id != null)
+            {
+                Role role = await db.Roles.FirstOrDefaultAsync(p => p.Id == id);
+                if (role != null)
+                    return View(role);
+            }
+            return NotFound();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteRole(int? id)
+        {
+            var CurrentUser = User.Identity.Name;
+            _logger.LogInformation("Admin.DeleteRole method called\nUser: {0}", CurrentUser);
+            if (id != null)
+            {
+                Role role = new Role { Id = id.Value };
+                db.Entry(role).State = EntityState.Deleted;
+                await db.SaveChangesAsync();
+
+                _logger.LogInformation("Deleted role with id {0}", id);
+                return RedirectToAction("UserList");
+            }
+            return NotFound();
         }
 
         public async Task<IActionResult> Department()

@@ -23,7 +23,7 @@
                 <div class="btn-group" role="group">
                     
                     <a asp-action="" asp-controller="Admin" asp-route-id="@item.Id" class="btn btn-light btn-sm">Изменить</a>
-                    <a asp-action="" asp-controller="Admin" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Удалить</a>
+                    <a asp-action="DeleteRole" asp-controller="Admin" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Удалить</a>
                 </div>
             </td>
         </tr>
