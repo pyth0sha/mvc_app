@@ -22,7 +22,12 @@ namespace mvc_app.Controllers
             db = context;
             _logger = logger;
         }
-        public async Task<IActionResult> UserList(string searchString)
+
+        // TODO:
+        // add pagination
+        // add sorting
+        // move roles management to roles controller
+        public async Task<IActionResult> UserList(string searchString, int? pageNumber)
         {
             ViewData["CurrentFilter"] = searchString;
 
