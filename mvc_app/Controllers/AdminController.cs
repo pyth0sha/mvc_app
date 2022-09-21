@@ -116,7 +116,7 @@ namespace mvc_app.Controllers
                 await db.SaveChangesAsync();
                 
                 _logger.LogInformation("Deleted user with id {0}", id);
-                return RedirectToAction("RoleList");   
+                return RedirectToAction("UserList");   
             }
             return NotFound();
         }
@@ -172,7 +172,7 @@ namespace mvc_app.Controllers
                 await db.SaveChangesAsync();
 
                 _logger.LogInformation("Deleted role with id {0}", id);
-                return RedirectToAction("UserList");
+                return RedirectToAction("RoleList");
             }
             return NotFound();
         }
