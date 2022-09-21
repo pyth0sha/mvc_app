@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Linq;
 
 namespace mvc_app.Controllers
 {
@@ -20,15 +22,25 @@ namespace mvc_app.Controllers
             db = context;
             _logger = logger;
         }
-        public async Task<IActionResult> UserList()
+        public async Task<IActionResult> UserList(string searchString)
         {
+            ViewData["CurrentFilter"] = searchString;
+
+            var users = from s in db.Users select s;
+            //var users = await db.Users.ToListAsync();
+
+             if (!String.IsNullOrEmpty(searchString))
+            {
+                users = users.Where(s => s.Number.Contains(searchString));
+            }
+
             var CurrentUser = User.Identity.Name;
             _logger.LogInformation("Admin.UserList method called\n User: {0}", CurrentUser);
             
             ViewBag.Roles = await db.Roles.ToListAsync();
             ViewBag.Shops = await db.Shops.ToListAsync();
             ViewBag.Role = "admin";
-            return View(await db.Users.ToListAsync());
+            return View(await users.ToListAsync());
         }
 
         public async Task<IActionResult> Create()

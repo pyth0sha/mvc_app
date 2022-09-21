@@ -3,6 +3,16 @@
     ViewBag.Title = "Admin site";
 }
 <a asp-action="Create">Добавить пользователя</a>
+
+<form asp-action="UserList" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Поиск по имени пользователя: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Поиск" class="btn btn-light" />|
+            <a asp-action="UserList" class="btn btn-light">Сбросить</a>
+        </p>
+    </div>
+</form>
 <!-- <p>@ViewBag.Roles</p> -->
 <table class="table table-stripped">
     <thead>
