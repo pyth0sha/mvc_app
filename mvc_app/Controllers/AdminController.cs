@@ -24,8 +24,6 @@ namespace mvc_app.Controllers
         }
 
         // TODO:
-        // add pagination
-        // add sorting
         // move roles management to roles controller
         public async Task<IActionResult> UserList(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
@@ -165,14 +163,14 @@ namespace mvc_app.Controllers
             await db.SaveChangesAsync();
 
             _logger.LogInformation("Created new role {0} with Id {1}", role.Name, role.Id);
-            return RedirectToAction("RoleList");
+            return RedirectToAction("Index", "Roles");
         }
 
-        public async Task<IActionResult> RoleList()
-        {
-            ViewBag.Role = "admin";
-            return View(await db.Roles.ToListAsync());
-        }
+        //public async Task<IActionResult> RoleList()
+        //{
+        //    ViewBag.Role = "admin";
+         //   return View(await db.Roles.ToListAsync());
+        //}
 
         [HttpGet]
         [ActionName("DeleteRole")]
@@ -201,7 +199,7 @@ namespace mvc_app.Controllers
                 await db.SaveChangesAsync();
 
                 _logger.LogInformation("Deleted role with id {0}", id);
-                return RedirectToAction("RoleList");
+                return RedirectToAction("Index", "Roles");
             }
             return NotFound();
         }
