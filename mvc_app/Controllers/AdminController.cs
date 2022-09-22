@@ -148,61 +148,7 @@ namespace mvc_app.Controllers
             return NotFound();
         }
 
-        public IActionResult CreateRole(){
-            ViewBag.Role = "admin";
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> CreateRole(Role role){
-            var CurrentUser = User.Identity.Name;
-            _logger.LogInformation("Admin.Create method called\nUser: {0}", CurrentUser);
-            _logger.LogInformation("Adding new role: {0} {1}", role.Id, role.Name);
-
-            db.Roles.Add(role);
-            await db.SaveChangesAsync();
-
-            _logger.LogInformation("Created new role {0} with Id {1}", role.Name, role.Id);
-            return RedirectToAction("Index", "Roles");
-        }
-
-        //public async Task<IActionResult> RoleList()
-        //{
-        //    ViewBag.Role = "admin";
-         //   return View(await db.Roles.ToListAsync());
-        //}
-
-        [HttpGet]
-        [ActionName("DeleteRole")]
-        public async Task<IActionResult> ConfirmDeleteRole(int? id)
-        {
-            var CurrentUser = User.Identity.Name;
-            _logger.LogInformation("Admin.ConfirmDeleteRole method called\nUser: {0}", CurrentUser);
-            if (id != null)
-            {
-                Role role = await db.Roles.FirstOrDefaultAsync(p => p.Id == id);
-                if (role != null)
-                    return View(role);
-            }
-            return NotFound();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> DeleteRole(int? id)
-        {
-            var CurrentUser = User.Identity.Name;
-            _logger.LogInformation("Admin.DeleteRole method called\nUser: {0}", CurrentUser);
-            if (id != null)
-            {
-                Role role = new Role { Id = id.Value };
-                db.Entry(role).State = EntityState.Deleted;
-                await db.SaveChangesAsync();
-
-                _logger.LogInformation("Deleted role with id {0}", id);
-                return RedirectToAction("Index", "Roles");
-            }
-            return NotFound();
-        }
+        
 
         public async Task<IActionResult> Department()
         {

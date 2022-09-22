@@ -1,6 +1,6 @@
 ﻿@model mvc_app.Models.Role
 @{
-    ViewBag.Title = "Удаление пользователя";
+    ViewBag.Title = "Удаление роли";
 }
 
 <div>
@@ -17,7 +17,7 @@
     </dl>
 
     <div>
-        <form asp-controller="Admin" asp-action="DeleteRole" method="post">
+        <form asp-controller="Roles" asp-action="Delete" method="post">
             <div class="form-group">
                 <input type="submit" class="btn btn-default" value="Удалить" />
             </div>

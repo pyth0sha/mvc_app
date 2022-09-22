@@ -27,5 +27,57 @@ namespace mvc_app.Controllers
             ViewBag.Role = "admin";
             return View(await db.Roles.ToListAsync());
         }
+
+        public IActionResult Create()
+        {
+            ViewBag.Role = "admin";
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Role role)
+        {
+            var CurrentUser = User.Identity.Name;
+            _logger.LogInformation("Roles.Create method called\nUser: {0}", CurrentUser);
+            _logger.LogInformation("Adding new role: {0} {1}", role.Id, role.Name);
+
+            db.Roles.Add(role);
+            await db.SaveChangesAsync();
+
+            _logger.LogInformation("Created new role {0} with Id {1}", role.Name, role.Id);
+            return RedirectToAction("Index", "Roles");
+        }
+
+        [HttpGet]
+        [ActionName("Delete")]
+        public async Task<IActionResult> ConfirmDelete(int? id)
+        {
+            var CurrentUser = User.Identity.Name;
+            _logger.LogInformation("Roles.ConfirmDelete method called\nUser: {0}", CurrentUser);
+            if (id != null)
+            {
+                Role role = await db.Roles.FirstOrDefaultAsync(p => p.Id == id);
+                if (role != null)
+                    return View(role);
+            }
+            return NotFound();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            var CurrentUser = User.Identity.Name;
+            _logger.LogInformation("Roles.Delete method called\nUser: {0}", CurrentUser);
+            if (id != null)
+            {
+                Role role = new Role { Id = id.Value };
+                db.Entry(role).State = EntityState.Deleted;
+                await db.SaveChangesAsync();
+
+                _logger.LogInformation("Deleted role with id {0}", id);
+                return RedirectToAction("Index", "Roles");
+            }
+            return NotFound();
+        }
     }
 }
