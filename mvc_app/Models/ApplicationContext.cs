@@ -4,6 +4,7 @@ namespace mvc_app.Models
 {
     public class ApplicationContext : DbContext
     {
+        // настройка таблиц базы данных
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Department> Departments { get; set; }
@@ -11,12 +12,10 @@ namespace mvc_app.Models
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
-            //Database.EnsureDeleted();
             Database.EnsureCreated();   // создаем базу данных при первом обращении
-            //Database.Migrate();
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder) // заполняем бд при первом обращении
         {
             string adminRoleName = "admin";
             string userRoleName = "user";
@@ -41,6 +40,7 @@ namespace mvc_app.Models
             User adminUser = new User { Id = 1, Number = adminNumber, Password = adminPassword, RoleId = adminRole.Id, ShopId = shop1.Id };
             User customUser = new User { Id = 2, Number = "u12345", Password = "123", RoleId = userRole.Id, ShopId = shop2.Id };
 
+            // добавляем всё в бд
             modelBuilder.Entity<Role>().HasData(new Role[] { adminRole, userRole });
             modelBuilder.Entity<Department>().HasData(new Department[] { dep1, dep2, dep3 });
             modelBuilder.Entity<Shop>().HasData(new Shop[] { shop1, shop2, shop3 });

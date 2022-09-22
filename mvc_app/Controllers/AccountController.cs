@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using mvc_app.ViewModels; // пространство имен моделей RegisterModel и LoginModel
-using mvc_app.Models; // пространство имен UserContext и класса User
+using mvc_app.ViewModels;
+using mvc_app.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System;
@@ -23,10 +23,13 @@ namespace mvc_app.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel model)
         {
+            // метод для входа в систему
+
             if (ModelState.IsValid)
             {
                 User user = await db.Users.Include(u => u.Role)
@@ -55,10 +58,11 @@ namespace mvc_app.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterModel model)
         {
+            // метод регистрации
+
             if (ModelState.IsValid)
             {
                 User user = await db.Users.FirstOrDefaultAsync(u => u.Number == model.Number);
-                //Console.WriteLine("Новый пользователь: {0}",user.Email);
                 if (user == null)
                 {
                     // добавляем пользователя в бд
@@ -86,6 +90,8 @@ namespace mvc_app.Controllers
 
         private async Task Authenticate(User user)
         {
+            // аутентификация пользователя
+
             // создаем один claim
             var claims = new List<Claim>
             {
@@ -99,8 +105,9 @@ namespace mvc_app.Controllers
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
 
-            public async Task<IActionResult> Logout()
+        public async Task<IActionResult> Logout()
         {
+            // выход из системы
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Account");
         }

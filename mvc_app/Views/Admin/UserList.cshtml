@@ -5,12 +5,16 @@
 <a asp-action="Create">Добавить пользователя</a>
 
 <form asp-action="UserList" method="get">
-    <div class="form-actions no-color">
-        <p>
-            Поиск по имени пользователя: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
-            <input type="submit" value="Поиск" class="btn btn-light" />|
-            <a asp-action="UserList" class="btn btn-light">Сбросить</a>
-        </p>
+    <!--<div class="form-actions no-color">-->
+    <div class="input-group mb-3">    
+        <div class="input-group-prepend">
+            <span class="input-group-text">Поиск по имени:</span> 
+        </div>
+            <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" class="form-control"/>
+            <div class="input-group-append">
+                <input type="submit" value="Поиск" class="btn btn-light" />
+                <a asp-action="UserList" class="btn btn-light">Сбросить</a>
+            </div>
     </div>
 </form>
 <!-- <p>@ViewBag.Roles</p> -->

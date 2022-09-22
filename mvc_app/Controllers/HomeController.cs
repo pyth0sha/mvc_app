@@ -11,8 +11,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace mvc_app.Controllers
 {
-    //[Authorize]
-
     public class HomeController : Controller
     {
         private ApplicationContext db;
@@ -21,26 +19,28 @@ namespace mvc_app.Controllers
             db = context;
         }
 
-        //[AllowAnonymous]
         public async Task<IActionResult> Index()
         {
+            // главная страница для обычных пользователей
+            // содержит список отделов
+
             User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
             if (user != null) 
             { 
                 Role role = await db.Roles.FirstOrDefaultAsync(p => p.Id == user.RoleId);
                 ViewBag.Role = role.Name; 
             }
-            //return View(await db.Users.ToListAsync());
 
             return View(await db.Departments.ToListAsync());
         }
 
         public async Task<IActionResult> Department(int? id)
         {
+            // страница отдела, содержит список цехов
+
             if(id != null)
             {
-                var shops = from s in db.Shops
-                            select s;
+                var shops = from s in db.Shops select s;
                 shops = shops.Where(p => p.DepartmentId == id);
                 return View(await shops.ToListAsync());
             }
