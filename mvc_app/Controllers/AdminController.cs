@@ -27,14 +27,24 @@ namespace mvc_app.Controllers
         // add pagination
         // add sorting
         // move roles management to roles controller
-        public async Task<IActionResult> UserList(string searchString, int? pageNumber)
+        public async Task<IActionResult> UserList(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
+            ViewData["CurrentSort"] = sortOrder;           
+            //var users = await db.Users.ToListAsync();
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            
             ViewData["CurrentFilter"] = searchString;
 
             var users = from s in db.Users select s;
-            //var users = await db.Users.ToListAsync();
-
-             if (!String.IsNullOrEmpty(searchString))
+            if (!String.IsNullOrEmpty(searchString))
             {
                 users = users.Where(s => s.Number.Contains(searchString));
             }
@@ -45,7 +55,9 @@ namespace mvc_app.Controllers
             ViewBag.Roles = await db.Roles.ToListAsync();
             ViewBag.Shops = await db.Shops.ToListAsync();
             ViewBag.Role = "admin";
-            return View(await users.ToListAsync());
+
+            int pageSize = 3;
+            return View(await PaginatedList<User>.CreateAsync(users, pageNumber ?? 1, pageSize));
         }
 
         public async Task<IActionResult> Create()

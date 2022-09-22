@@ -1,4 +1,4 @@
-﻿@model IEnumerable<mvc_app.Models.User>
+﻿@model PaginatedList<mvc_app.Models.User>
 @{
     ViewBag.Title = "Admin site";
 }
@@ -47,3 +47,23 @@
     }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="UserList"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-light @prevDisabled">
+    Previous
+</a>
+<a asp-action="UserList"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-light @nextDisabled">
+    Next
+</a>
