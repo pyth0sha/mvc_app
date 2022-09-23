@@ -2,7 +2,9 @@
 @{
     ViewBag.Title = "Admin site";
 }
-<a asp-action="Create">Добавить пользователя</a>
+<div class="my-sm-2">
+    <a asp-action="Create" class="btn btn-outline-info">Добавить</a>
+</div>
 
 <form asp-action="UserList" method="get">
     <!--<div class="form-actions no-color">-->
@@ -10,12 +12,14 @@
         <div class="input-group-prepend">
             <span class="input-group-text">Поиск по имени:</span> 
         </div>
-            <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" class="form-control"/>
-            <div class="input-group-append">
-                <input type="submit" value="Поиск" class="btn btn-light" />
-                <a asp-action="UserList" class="btn btn-light">Сбросить</a>
-            </div>
+        <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" class="form-control col-4"/>
+        <div class="input-group-append">
+            <input type="submit" value="Поиск" class="btn btn-outline-primary" />
+        <a asp-action="UserList" class="btn btn-outline-primary">Сбросить</a>
+        </div>
     </div>
+
+    
 </form>
 <!-- <p>@ViewBag.Roles</p> -->
 <table class="table table-stripped">
@@ -43,7 +47,7 @@
             <td>
                 <div class="btn-group" role="group">
                     
-                    <a asp-action="Edit" asp-controller="Admin" asp-route-id="@item.Id" class="btn btn-light btn-sm">Изменить</a>
+                    <a asp-action="Edit" asp-controller="Admin" asp-route-id="@item.Id" class="btn btn-outline-info btn-sm">Изменить</a>
                     <a asp-action="Delete" asp-controller="Admin" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Удалить</a>
                 </div>
             </td>
@@ -61,13 +65,15 @@
    asp-route-sortOrder="@ViewData["CurrentSort"]"
    asp-route-pageNumber="@(Model.PageIndex - 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
-   class="btn btn-light @prevDisabled">
-    Previous
+   class="btn btn-outline-primary @prevDisabled">
+   <span aria-hidden="true">&laquo;</span>
+   Назад
 </a>
 <a asp-action="UserList"
    asp-route-sortOrder="@ViewData["CurrentSort"]"
    asp-route-pageNumber="@(Model.PageIndex + 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
-   class="btn btn-light @nextDisabled">
-    Next
+   class="btn btn-outline-primary @nextDisabled">
+   Вперед
+   <span aria-hidden="true">&raquo;</span>
 </a>

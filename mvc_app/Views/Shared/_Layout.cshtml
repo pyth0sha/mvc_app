@@ -27,7 +27,7 @@
                         </li>
                         @if(ViewBag.Role == "admin"){
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="UserList">Управление</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="UserList">Пользователи</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Roles" asp-action="Index">Роли</a>
@@ -35,11 +35,11 @@
                         }
                     </ul>
                     @if(User.Identity.IsAuthenticated){
-                        <a class="btn btn-primary" asp-controller="Account" asp-action="Logout">Выйти</a>
+                        <a class="btn btn-outline-primary" asp-controller="Account" asp-action="Logout">Выйти</a>
                     }
                     else
                     {
-                        <a class="btn btn-primary" asp-controller="Account" asp-action="Login">Войти</a>
+                        <a class="btn btn-outline-primary" asp-controller="Account" asp-action="Login">Войти</a>
                     }
                 </div>
             </div>

@@ -2,7 +2,9 @@
 @{
     ViewBag.Title = "Список ролей";
 }
-<a asp-action="Create">Добавить роль</a>
+<div class="my-sm-2">
+    <a asp-action="Create" class="btn btn-outline-info">Добавить</a>
+</div>
 <!-- <p>@ViewBag.Roles</p> -->
 <table class="table table-stripped">
     <thead>
@@ -22,7 +24,7 @@
             <td>
                 <div class="btn-group" role="group">
                     
-                    <a asp-action="" asp-controller="Roles" asp-route-id="@item.Id" class="btn btn-light btn-sm">Изменить</a>
+                    <a asp-action="" asp-controller="Roles" asp-route-id="@item.Id" class="btn btn-outline-info btn-sm">Изменить</a>
                     <a asp-action="Delete" asp-controller="Roles" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Удалить</a>
                 </div>
             </td>

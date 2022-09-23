@@ -54,7 +54,7 @@ namespace mvc_app.Controllers
             ViewBag.Shops = await db.Shops.ToListAsync();
             ViewBag.Role = "admin";
 
-            int pageSize = 3;
+            int pageSize = 5;
             return View(await PaginatedList<User>.CreateAsync(users, pageNumber ?? 1, pageSize));
         }
 
