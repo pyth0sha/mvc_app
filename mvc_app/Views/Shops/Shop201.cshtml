@@ -1,12 +1,11 @@
-﻿@model mvc_app.ViewModels.Data201Model
+﻿@model mvc_app.Models.Data201
 @{
     ViewBag.Title = "Ц.201 ввод";
 }
 
 <form asp-action="Shop201" asp-controller="Shops">
     <div class="form-group">
-        <!--<label asp-for="Propilen" class="control-label">@Html.DisplayNameFor(model=>model.Propilen)</label>-->
-        <label>@Html.DisplayNameFor(model=>model.Propilen)</label>
+        <label asp-for="Propilen" class="control-label">@Html.DisplayNameFor(model=>model.Propilen)</label>
         <input type="text" asp-for="Propilen" class="form-control" />
     </div>
     <div class="form-group">

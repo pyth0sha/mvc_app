@@ -1,22 +1,51 @@
-﻿@model mvc_app.ViewModels.Data101Model
+﻿@model mvc_app.Models.Data101
 @{
     ViewBag.Title = "Ц.101 ввод";
 }
+<div class="row">
+    <div class="col">
+        <form asp-action="Shop101" asp-controller="Shops">
+            <div class="form-group">
+                <label asp-for="BenzinLight" class="control-label">@Html.DisplayNameFor(model=>model.BenzinLight)</label>
+                <input type="text" asp-for="BenzinLight" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Butan" class="control-label">@Html.DisplayNameFor(model=>model.Butan)</label>
+                <input type="text" asp-for="Butan" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Kerosin" class="control-label">@Html.DisplayNameFor(model=>model.Kerosin)</label>
+                <input class="form-control" id="role" asp-for="Kerosin">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Отправить" class="btn btn-light" />
+            </div>
+        </form>
+    </div>
 
-<form asp-action="Shop101" asp-controller="Shops">
-    <div class="form-group">
-        <label asp-for="BenzinLight" class="control-label">@Html.DisplayNameFor(model=>model.BenzinLight)</label>
-        <input type="text" asp-for="BenzinLight" class="form-control" />
+    <div class="col">
+        Последний ввод
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Поле</th>
+                    <th>Значение</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Html.DisplayNameFor(model=>model.BenzinLight)</td>
+                    <td>@Model.BenzinLight</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model=>model.Butan)</td>
+                    <td>@Model.Butan</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model=>model.Kerosin)</td>
+                    <td>@Model.Kerosin</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <div class="form-group">
-        <label asp-for="Butan" class="control-label">@Html.DisplayNameFor(model=>model.Butan)</label>
-        <input type="text" asp-for="Butan" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Kerosin" class="control-label">@Html.DisplayNameFor(model=>model.Kerosin)</label>
-        <input class="form-control" id="role" asp-for="Kerosin">
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Отправить" class="btn btn-light" />
-    </div>
-</form>
+</div>

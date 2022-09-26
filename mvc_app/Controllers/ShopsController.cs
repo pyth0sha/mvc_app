@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using mvc_app.Models;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace mvc_app.Controllers
@@ -38,9 +39,11 @@ namespace mvc_app.Controllers
         }
 
         [HttpGet]
-        public IActionResult Shop101()
+        public async Task<IActionResult> Shop101()
         {
-            return View();
+            User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
+            var lastInput = await db.data101.OrderByDescending(p => p.ShopId == user.ShopId).LastAsync();
+            return View(lastInput);
         }
 
         [HttpPost]
