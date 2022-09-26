@@ -47,22 +47,8 @@ namespace mvc_app.Controllers
             return NotFound();
         }
 
-        public IActionResult ShopDataInput(int? id)
-        {
-          var? shopForm = null;
-          if(id != null)
-          {
-            switch (id)
-            {
-              case 1:
-                break;
-                
-              default:
-                break;
-            }
-          }
-          return View();
-        }
+        //public IActionResult ShopDataInput(int? id)
+        //{ return View(); }
 
     }
 }

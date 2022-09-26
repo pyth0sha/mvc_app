@@ -1,0 +1,23 @@
+﻿@model mvc_app.ViewModels.Data201Model
+@{
+    ViewBag.Title = "Ц.201 ввод";
+}
+
+<form asp-action="Shop201" asp-controller="Shops">
+    <div class="form-group">
+        <!--<label asp-for="Propilen" class="control-label">@Html.DisplayNameFor(model=>model.Propilen)</label>-->
+        <label>@Html.DisplayNameFor(model=>model.Propilen)</label>
+        <input type="text" asp-for="Propilen" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Angidrid" class="control-label">@Html.DisplayNameFor(model=>model.Angidrid)</label>
+        <input type="text" asp-for="Angidrid" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Laprol" class="control-label">@Html.DisplayNameFor(model=>model.Laprol)</label>
+        <input class="form-control" id="role" asp-for="Laprol">
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-light" />
+    </div>
+</form>
