@@ -11,11 +11,15 @@ namespace mvc_app.Models
         public DbSet<Role> Roles { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Shop> Shops { get; set; }
+        public DbSet<Data101> data101 {get; set;}
+        public DbSet<Data201> data201 {get; set;}
+        public DbSet<Data401> data401 {get; set;}
+
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
-            Database.EnsureDeleted();
-            //Database.EnsureCreated();   // создаем базу данных при первом обращении
+            //Database.EnsureDeleted();
+            Database.EnsureCreated();   // создаем базу данных при первом обращении
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) // заполняем бд при первом обращении
@@ -29,7 +33,7 @@ namespace mvc_app.Models
             // добавляем роли
             Role adminRole = new Role { Id = 1, Name = adminRoleName };
             Role userRole = new Role { Id = 2, Name = userRoleName };
-            
+
             // добавляем отделы
             Department dep1 = new Department { Id = 1, Name = "первый" };
             Department dep2 = new Department { Id = 2, Name = "второй" };
@@ -49,14 +53,14 @@ namespace mvc_app.Models
                 new Shop {Id = 7, Number = "201", DepartmentId = 2 },
                 new Shop {Id = 8, Number = "204", DepartmentId = 2 },
                 new Shop {Id = 9, Number = "401", DepartmentId = 3 },
-                new Shop {Id = 20, Number = "402", DepartmentId = 3 },
+                new Shop {Id = 10, Number = "402", DepartmentId = 3 },
             };
 
             // добавляем пользователей
             User adminUser = new User { Id = 1, Number = adminNumber, Password = adminPassword, RoleId = adminRole.Id, ShopId = 1 };
             User user1 = new User { Id = 2, Number = "u11111", Password = "111", RoleId = userRole.Id, ShopId = 1 };
-            User user2 = new User { Id = 2, Number = "u22222", Password = "222", RoleId = userRole.Id, ShopId = 2 };
-            User user3 = new User { Id = 2, Number = "u33333", Password = "333", RoleId = userRole.Id, ShopId = 3 };
+            User user2 = new User { Id = 3, Number = "u22222", Password = "222", RoleId = userRole.Id, ShopId = 7 };
+            User user3 = new User { Id = 4, Number = "u33333", Password = "333", RoleId = userRole.Id, ShopId = 9 };
 
             // добавляем всё в бд
             modelBuilder.Entity<Role>().HasData(new Role[] { adminRole, userRole });

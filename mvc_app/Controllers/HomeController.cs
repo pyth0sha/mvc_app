@@ -25,10 +25,10 @@ namespace mvc_app.Controllers
             // содержит список отделов
 
             User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
-            if (user != null) 
-            { 
+            if (user != null)
+            {
                 Role role = await db.Roles.FirstOrDefaultAsync(p => p.Id == user.RoleId);
-                ViewBag.Role = role.Name; 
+                ViewBag.Role = role.Name;
             }
 
             return View(await db.Departments.ToListAsync());
@@ -46,6 +46,23 @@ namespace mvc_app.Controllers
             }
             return NotFound();
         }
-        
+
+        public IActionResult ShopDataInput(int? id)
+        {
+          var? shopForm = null;
+          if(id != null)
+          {
+            switch (id)
+            {
+              case 1:
+                break;
+                
+              default:
+                break;
+            }
+          }
+          return View();
+        }
+
     }
 }

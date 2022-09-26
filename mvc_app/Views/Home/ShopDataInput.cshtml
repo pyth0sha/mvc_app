@@ -1,0 +1,22 @@
+@model mvc_app.ViewModels.Data101Model
+@{
+  ViewBag.Title = "Ц.101 ввод";
+}
+
+<form asp-action="ShopDataInput" asp-controller="Home">
+    <div class="form-group">
+        <label asp-for="BenzinLight" class="control-label">BenzinLight</label>
+        <input type="text" asp-for="BenzinLight" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Butan" class="control-label">Butan</label>
+        <input type="text" asp-for="Butan" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Kerosin" class="control-label">Kerosin</label>
+        <input class="form-control" id="role" asp-for="Kerosin">
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-light" />
+    </div>
+</form>
