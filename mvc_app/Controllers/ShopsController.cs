@@ -30,6 +30,8 @@ namespace mvc_app.Controllers
                         
                     case 7:
                         return RedirectToAction("Shop201");
+                    case 9:
+                        return RedirectToAction("Shop401");
 
                     default:
                         return View();
@@ -41,9 +43,10 @@ namespace mvc_app.Controllers
         [HttpGet]
         public async Task<IActionResult> Shop101()
         {
-            User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
-            var lastInput = await db.data101.OrderByDescending(p => p.ShopId == user.ShopId).LastAsync();
-            return View(lastInput);
+            //User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
+            //var lastInput = await db.data101.OrderByDescending(p => p.ShopId == user.ShopId).LastOrDefaultAsync();
+            //return View(lastInput);
+            return View();
         }
 
         [HttpPost]
@@ -70,6 +73,22 @@ namespace mvc_app.Controllers
             db.data101.Add(data);
             await db.SaveChangesAsync();
             return RedirectToAction("Shop201");
+        }
+
+        [HttpGet]
+        public IActionResult Shop401()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Shop401(Data101 data)
+        {
+            User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
+            data.ShopId = user.ShopId;
+            db.data101.Add(data);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Shop401");
         }
 
         // GET: ShopsController/Details/5

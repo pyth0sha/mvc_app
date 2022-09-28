@@ -26,17 +26,59 @@ namespace mvc_app.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<decimal>("Agidol")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("BenzinHard")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<decimal>("BenzinLight")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("Butan")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<decimal>("Ethylene")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("FractionC4")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("FractionPropan")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("FractionPyrolize")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Ingibitor")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<decimal>("Kerosin")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ShopId")
+                    b.Property<decimal>("MVF")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Metanol")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Natrium")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Propylene")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Reflux")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("SPT")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("ShopId")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("Waste")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -61,7 +103,7 @@ namespace mvc_app.Migrations
                     b.Property<decimal>("Propilen")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ShopId")
+                    b.Property<int?>("ShopId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -87,7 +129,7 @@ namespace mvc_app.Migrations
                     b.Property<decimal>("Natrii")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ShopId")
+                    b.Property<int?>("ShopId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -304,9 +346,7 @@ namespace mvc_app.Migrations
                 {
                     b.HasOne("mvc_app.Models.Shop", "Shop")
                         .WithMany()
-                        .HasForeignKey("ShopId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ShopId");
 
                     b.Navigation("Shop");
                 });
@@ -315,9 +355,7 @@ namespace mvc_app.Migrations
                 {
                     b.HasOne("mvc_app.Models.Shop", "Shop")
                         .WithMany()
-                        .HasForeignKey("ShopId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ShopId");
 
                     b.Navigation("Shop");
                 });
@@ -326,9 +364,7 @@ namespace mvc_app.Migrations
                 {
                     b.HasOne("mvc_app.Models.Shop", "Shop")
                         .WithMany()
-                        .HasForeignKey("ShopId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ShopId");
 
                     b.Navigation("Shop");
                 });
