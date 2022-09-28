@@ -38,11 +38,8 @@ namespace mvc_app.Models
             Department dep1 = new Department { Id = 1, Name = "первый" };
             Department dep2 = new Department { Id = 2, Name = "второй" };
             Department dep3 = new Department { Id = 3, Name = "третий" };
+            
             // добавляем цеха
-            //Shop shop1 = new Shop { Id = 1, Number = "101", DepartmentId = 1 };
-            //Shop shop2 = new Shop { Id = 2, Number = "201", DepartmentId = 2 };
-            //Shop shop3 = new Shop { Id = 3, Number = "301", DepartmentId = 3 };
-
             List<Shop> shops = new List<Shop> {
                 new Shop {Id = 1, Number = "101", DepartmentId = 1 },
                 new Shop {Id = 2, Number = "102", DepartmentId = 1 },

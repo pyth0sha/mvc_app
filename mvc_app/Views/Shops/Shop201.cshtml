@@ -1,7 +1,10 @@
 ﻿@model mvc_app.Models.Data201
+@using System.Reflection
 @{
     ViewBag.Title = "Ц.201 ввод";
+    PropertyInfo[] propInfo = @Model.GetType().GetProperties();
 }
+
 
 <form asp-action="Shop201" asp-controller="Shops">
     <div class="form-group">
@@ -19,4 +22,9 @@
     <div class="form-group">
         <input type="submit" value="Отправить" class="btn btn-light" />
     </div>
+
+    @foreach (var prop in propInfo)
+    {
+        <p>@prop.Name</p>
+    }
 </form>

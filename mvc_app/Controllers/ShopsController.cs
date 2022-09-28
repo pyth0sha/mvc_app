@@ -41,7 +41,7 @@ namespace mvc_app.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Shop101()
+        public IActionResult Shop101()
         {
             //User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
             //var lastInput = await db.data101.OrderByDescending(p => p.ShopId == user.ShopId).LastOrDefaultAsync();
@@ -62,15 +62,16 @@ namespace mvc_app.Controllers
         [HttpGet]
         public IActionResult Shop201()
         {
-            return View();
+            var shop = new Data201 {};
+            return View(shop);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Shop201(Data101 data)
+        public async Task<IActionResult> Shop201(Data201 data)
         {
             User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
             data.ShopId = user.ShopId;
-            db.data101.Add(data);
+            db.data201.Add(data);
             await db.SaveChangesAsync();
             return RedirectToAction("Shop201");
         }
