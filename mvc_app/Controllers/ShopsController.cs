@@ -6,9 +6,11 @@ using mvc_app.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SmartBreadcrumbs.Attributes;
 
 namespace mvc_app.Controllers
 {
+    [Breadcrumb("Цех")]
     public class ShopsController : Controller
     {
         private ApplicationContext db;
@@ -19,7 +21,7 @@ namespace mvc_app.Controllers
             db = context;
             _logger = logger;
         }
-        // GET: ShopsController
+        
         public ActionResult Index(int? id)
         {
             if (id != null)
@@ -32,6 +34,7 @@ namespace mvc_app.Controllers
         }
 
         [HttpGet]
+        [Breadcrumb("Цех")]
         public IActionResult Shop101()
         {
             return View();
@@ -48,6 +51,7 @@ namespace mvc_app.Controllers
         }
 
         [HttpGet]
+        [Breadcrumb("Цех")]
         public IActionResult Shop201()
         {
             return View();
@@ -64,6 +68,7 @@ namespace mvc_app.Controllers
         }
 
         [HttpGet]
+        [Breadcrumb("Цех")]
         public IActionResult Shop401()
         {
             return View();

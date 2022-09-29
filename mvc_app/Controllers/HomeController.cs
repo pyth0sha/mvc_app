@@ -8,9 +8,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using SmartBreadcrumbs.Attributes;
 
 namespace mvc_app.Controllers
 {
+    [DefaultBreadcrumb("Главная")]
     public class HomeController : Controller
     {
         private ApplicationContext db;
@@ -34,6 +36,7 @@ namespace mvc_app.Controllers
             return View(await db.Departments.ToListAsync());
         }
 
+        [Breadcrumb("Отдел")]
         public async Task<IActionResult> Department(int? id)
         {
             // страница отдела, содержит список цехов
