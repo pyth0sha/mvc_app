@@ -1,0 +1,111 @@
+@model mvc_app.Models.Data104
+@{
+    ViewBag.Title = "Ц.104 ввод";
+}
+<p>Ввод данных</p>
+<form asp-action="Shop104" asp-controller="Shops">
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Сырье</th>
+                <th></th>
+                <th>Норма</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.BenzinLight)</td>
+                <td><input type="text" asp-for="BenzinLight" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.BenzinHard)</td>
+                <td><input type="text" asp-for="BenzinHard" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Reflux)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="Reflux"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Butan)</td>
+                <td><input type="text" asp-for="Butan" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Kerosin)</td>
+                <td><input type="text" asp-for="Kerosin" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Natrium)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="Natrium"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Metanol)</td>
+                <td><input type="text" asp-for="Metanol" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Agidol)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="Agidol"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Ingibitor)</td>
+                <td><input type="text" asp-for="Ingibitor" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.DimetilSulfid)</td>
+                <td><input type="text" asp-for="DimetilSulfid" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Ethylene)</td>
+                <td><input type="text" asp-for="Ethylene" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Propylene)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="Propylene"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.FractionC4)</td>
+                <td><input type="text" asp-for="FractionC4" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.FractionPropan)</td>
+                <td><input type="text" asp-for="Butan" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.FractionPyrolize)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="FractionPyrolize "></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.SPT)</td>
+                <td><input type="text" asp-for="SPT" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.MVF)</td>
+                <td><input type="text" asp-for="MVF" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Waste)</td>
+                <td><input type="text" asp-for="Waste" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-light" />
+    </div>
+</form>

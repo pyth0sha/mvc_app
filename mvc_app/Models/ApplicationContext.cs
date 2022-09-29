@@ -15,6 +15,7 @@ namespace mvc_app.Models
         public DbSet<Data102> data102 {get; set;}
         public DbSet<Data104> data104 {get; set;}
         public DbSet<Data105> data105 {get; set;}
+        public DbSet<Data106_1> data106_1 {get; set;}
         public DbSet<Data106_2> data106_2 {get; set;}
         public DbSet<Data201> data201 {get; set;}
         public DbSet<Data401> data401 {get; set;}

@@ -1,0 +1,62 @@
+@model mvc_app.Models.Data106_2
+@{
+    ViewBag.Title = "Ц.106-2 ввод";
+}
+<p>Ввод данных</p>
+<form asp-action="Shop106_2" asp-controller="Shops">
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Сырье</th>
+                <th></th>
+                <th>Норма</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.PolyethyleneS2)</td>
+                <td><input type="text" asp-for="PolyethyleneS2" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Polyethylene2)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="Polyethylene2"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.PolyWasteA2)</td>
+                <td><input type="text" asp-for="PolyWasteA2" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.PolyWasteB)</td>
+                <td><input type="text" asp-for="PolyWasteB" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.PolyWasteA4)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="PolyWasteA4"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.PolyWasteD)</td>
+                <td><input type="text" asp-for="PolyWasteD" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.PlenkaWaste)</td>
+                <td><input type="text" asp-for="PlenkaWaste" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.PlenkaWasteE2)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="PlenkaWasteE2"></td>
+                <td>0.00072</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-light" />
+    </div>
+</form>
+

@@ -10,7 +10,7 @@ using mvc_app.Models;
 namespace mvc_app.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220929114344_Initial")]
+    [Migration("20220929133505_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -264,6 +264,50 @@ namespace mvc_app.Migrations
                     b.HasIndex("ShopId");
 
                     b.ToTable("data105");
+                });
+
+            modelBuilder.Entity("mvc_app.Models.Data106_1", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("BagPolyprop")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PlenkaWaste")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PlenkaWasteE2")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PolyWasteA2")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PolyWasteA4")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PolyWasteB")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PolyWasteD")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Polyethylene1")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PolyethyleneS1")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("ShopId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ShopId");
+
+                    b.ToTable("data106_1");
                 });
 
             modelBuilder.Entity("mvc_app.Models.Data106_2", b =>
@@ -590,6 +634,15 @@ namespace mvc_app.Migrations
                 });
 
             modelBuilder.Entity("mvc_app.Models.Data105", b =>
+                {
+                    b.HasOne("mvc_app.Models.Shop", "Shop")
+                        .WithMany()
+                        .HasForeignKey("ShopId");
+
+                    b.Navigation("Shop");
+                });
+
+            modelBuilder.Entity("mvc_app.Models.Data106_1", b =>
                 {
                     b.HasOne("mvc_app.Models.Shop", "Shop")
                         .WithMany()

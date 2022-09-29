@@ -27,7 +27,7 @@ namespace mvc_app.Controllers
             if (id != null)
             {
                 int Id = id.GetValueOrDefault();
-                var shopActions = new List<string> {"Shop101", "Shop102","Shop104","Shop105","Shop1061","Shop1062","Shop201","Shop204","Shop401","Shop402"};
+                var shopActions = new List<string> {"Shop101", "Shop102","Shop104","Shop105","Shop106_1","Shop106_2","Shop201","Shop204","Shop401","Shop402"};
                 return RedirectToAction(shopActions[Id-1]);
             }
             return View();
@@ -65,6 +65,74 @@ namespace mvc_app.Controllers
             db.data102.Add(data);
             await db.SaveChangesAsync();
             return RedirectToAction("Shop102");
+        }
+
+        [HttpGet]
+        [Breadcrumb("Цех")]
+        public IActionResult Shop104()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Shop104(Data104 data)
+        {
+            User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
+            data.ShopId = user.ShopId;
+            db.data104.Add(data);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Shop104");
+        }
+
+        [HttpGet]
+        [Breadcrumb("Цех")]
+        public IActionResult Shop105()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Shop105(Data105 data)
+        {
+            User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
+            data.ShopId = user.ShopId;
+            db.data105.Add(data);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Shop105");
+        }
+
+        [HttpGet]
+        [Breadcrumb("Цех")]
+        public IActionResult Shop106_1()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Shop106_1(Data106_1 data)
+        {
+            User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
+            data.ShopId = user.ShopId;
+            db.data106_1.Add(data);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Shop106_1");
+        }
+
+        [HttpGet]
+        [Breadcrumb("Цех")]
+        public IActionResult Shop106_2()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Shop106_2(Data106_2 data)
+        {
+            User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
+            data.ShopId = user.ShopId;
+            db.data106_2.Add(data);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Shop106_1");
         }
 
         [HttpGet]
