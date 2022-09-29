@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using mvc_app.Models;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,19 +24,9 @@ namespace mvc_app.Controllers
         {
             if (id != null)
             {
-                switch (id)
-                {
-                    case 1:
-                        return RedirectToAction("Shop101");
-                        
-                    case 7:
-                        return RedirectToAction("Shop201");
-                    case 9:
-                        return RedirectToAction("Shop401");
-
-                    default:
-                        return View();
-                }
+                int Id = id.GetValueOrDefault();
+                var shopActions = new List<string> {"Shop101", "Shop102","Shop104","Shop105","Shop1061","Shop1062","Shop201","Shop204","Shop401","Shop402"};
+                return RedirectToAction(shopActions[Id-1]);
             }
             return View();
         }
@@ -43,9 +34,6 @@ namespace mvc_app.Controllers
         [HttpGet]
         public IActionResult Shop101()
         {
-            //User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
-            //var lastInput = await db.data101.OrderByDescending(p => p.ShopId == user.ShopId).LastOrDefaultAsync();
-            //return View(lastInput);
             return View();
         }
 
@@ -62,8 +50,7 @@ namespace mvc_app.Controllers
         [HttpGet]
         public IActionResult Shop201()
         {
-            var shop = new Data201 {};
-            return View(shop);
+            return View();
         }
 
         [HttpPost]
@@ -83,11 +70,11 @@ namespace mvc_app.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Shop401(Data101 data)
+        public async Task<IActionResult> Shop401(Data401 data)
         {
             User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
             data.ShopId = user.ShopId;
-            db.data101.Add(data);
+            db.data401.Add(data);
             await db.SaveChangesAsync();
             return RedirectToAction("Shop401");
         }

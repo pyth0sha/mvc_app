@@ -2,114 +2,125 @@
 @{
     ViewBag.Title = "Ц.101 ввод";
 }
-<div class="row">
-    <div class="col text-right">
-        <form asp-action="Shop101" asp-controller="Shops">
-            <div class="form-group row">
-                <label asp-for="BenzinLight" class="col-sm-4 col-form-label">@Html.DisplayNameFor(model=>model.BenzinLight)</label>
-                <div class="col-sm-8">
-                    <input type="text" asp-for="BenzinLight" class="form-control form-control-sm" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label asp-for="BenzinHard" class="col-sm-4 col-form-label">@Html.DisplayNameFor(model=>model.BenzinHard)</label>
-                <div class="col-sm-8">
-                    <input type="text" asp-for="BenzinHard" class="form-control form-control-sm" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label asp-for="Reflux" class="col-sm-4 col-form-label">@Html.DisplayNameFor(model=>model.Reflux)</label>
-                <div class="col-sm-8">
-                    <input class="form-control form-control-sm" id="role" asp-for="Reflux">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label asp-for="Butan" class="col-sm-4 col-form-label">@Html.DisplayNameFor(model=>model.Butan)</label>
-                <div class="col-sm-8">
-                    <input type="text" asp-for="Butan" class="form-control form-control-sm" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label asp-for="Kerosin" class="col-sm-4 col-form-label">@Html.DisplayNameFor(model=>model.Kerosin)</label>
-                <div class="col-sm-8">
-                    <input type="text" asp-for="Kerosin" class="form-control form-control-sm" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label asp-for="Natrium" class="col-sm-4 col-form-label">@Html.DisplayNameFor(model=>model.Natrium)</label>
-                <div class="col-sm-8">
-                    <input class="form-control form-control-sm" id="role" asp-for="Natrium">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label asp-for="Metanol" class="col-sm-4 col-form-label">@Html.DisplayNameFor(model=>model.Metanol)</label>
-                <div class="col-sm-8">
-                    <input type="text" asp-for="Metanol" class="form-control form-control-sm" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label asp-for="Agidol" class="col-sm-4 col-form-label">@Html.DisplayNameFor(model=>model.Agidol)</label>
-                <div class="col-sm-8">
-                    <input class="form-control form-control-sm" id="role" asp-for="Agidol">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label asp-for="Ingibitor" class="col-sm-4 col-form-label">@Html.DisplayNameFor(model=>model.Ingibitor)</label>
-                <div class="col-sm-8">
-                    <input type="text" asp-for="Ingibitor" class="form-control form-control-sm" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label asp-for="Ethylene" class="col-sm-4 col-form-label">@Html.DisplayNameFor(model=>model.Ethylene)</label>
-                <div class="col-sm-8">
-                    <input type="text" asp-for="Ethylene" class="form-control form-control-sm" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label asp-for="Propylene" class="col-sm-4 col-form-label">@Html.DisplayNameFor(model=>model.Propylene)</label>
-                <div class="col-sm-8">
-                    <input class="form-control form-control-sm" id="role" asp-for="Propylene">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label asp-for="FractionC4" class="col-sm-4 col-form-label">@Html.DisplayNameFor(model=>model.FractionC4)</label>
-                <div class="col-sm-8">
-                    <input type="text" asp-for="FractionC4" class="form-control form-control-sm" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label asp-for="FractionPropan" class="col-sm-4 col-form-label">@Html.DisplayNameFor(model=>model.FractionPropan)</label>
-                <div class="col-sm-8">
-                    <input type="text" asp-for="Butan" class="form-control form-control-sm" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label asp-for="FractionPyrolize" class="col-sm-4 col-form-label">@Html.DisplayNameFor(model=>model.FractionPyrolize)</label>
-                <div class="col-sm-8">
-                    <input class="form-control form-control-sm" id="role" asp-for="FractionPyrolize ">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label asp-for="SPT" class="col-sm-4 col-form-label">@Html.DisplayNameFor(model=>model.SPT)</label>
-                <div class="col-sm-8">
-                    <input type="text" asp-for="SPT" class="form-control form-control-sm" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label asp-for="MVF" class="col-sm-4 col-form-label">@Html.DisplayNameFor(model=>model.MVF)</label>
-                <div class="col-sm-8">
-                    <input type="text" asp-for="MVF" class="form-control form-control-sm" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label asp-for="Waste" class="col-sm-4 col-form-label">@Html.DisplayNameFor(model=>model.Waste)</label>
-                <div class="col-sm-8">
-                    <input type="text" asp-for="Waste" class="form-control form-control-sm" />
-                </div>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Отправить" class="btn btn-light" />
-            </div>
-        </form>
+<p>Ввод данных</p>
+<form asp-action="Shop101" asp-controller="Shops">
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Сырье</th>
+                <th></th>
+                <th>Норма</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.BenzinLight)</td>
+                <td><input type="text" asp-for="BenzinLight" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.BenzinHard)</td>
+                <td><input type="text" asp-for="BenzinHard" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Reflux)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="Reflux"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Butan)</td>
+                <td><input type="text" asp-for="Butan" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Kerosin)</td>
+                <td><input type="text" asp-for="Kerosin" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Natrium)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="Natrium"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Metanol)</td>
+                <td><input type="text" asp-for="Metanol" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Agidol)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="Agidol"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Ingibitor)</td>
+                <td><input type="text" asp-for="Ingibitor" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Ethylene)</td>
+                <td><input type="text" asp-for="Ethylene" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Propylene)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="Propylene"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.FractionC4)</td>
+                <td><input type="text" asp-for="FractionC4" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.FractionPropan)</td>
+                <td><input type="text" asp-for="Butan" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.FractionPyrolize)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="FractionPyrolize "></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.SPT)</td>
+                <td><input type="text" asp-for="SPT" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.MVF)</td>
+                <td><input type="text" asp-for="MVF" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Waste)</td>
+                <td><input type="text" asp-for="Waste" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-light" />
     </div>
-</div>
+</form>
+
+@* <form asp-action="Shop101" asp-controller="Shops">
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Сырье</th>
+                <th></th>
+                <th>Норма</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.BenzinLight)</td>
+                <td><input type="text" asp-for="BenzinLight" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+
+        </tbody>
+    </table>
+</form> *@
