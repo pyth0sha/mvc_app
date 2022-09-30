@@ -154,6 +154,23 @@ namespace mvc_app.Controllers
 
         [HttpGet]
         [Breadcrumb("Цех")]
+        public IActionResult Shop204()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Shop204(Data204 data)
+        {
+            User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
+            data.ShopId = user.ShopId;
+            db.data204.Add(data);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Shop204");
+        }
+
+        [HttpGet]
+        [Breadcrumb("Цех")]
         public IActionResult Shop401()
         {
             return View();
