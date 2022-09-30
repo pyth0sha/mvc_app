@@ -20,6 +20,7 @@ namespace mvc_app.Models
         public DbSet<Data201> data201 {get; set;}
         public DbSet<Data204> data204 {get; set;}
         public DbSet<Data401> data401 {get; set;}
+        public DbSet<Data402> data402 {get; set;}
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)

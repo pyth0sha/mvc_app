@@ -186,6 +186,23 @@ namespace mvc_app.Controllers
             return RedirectToAction("Shop401");
         }
 
+        [HttpGet]
+        [Breadcrumb("Цех")]
+        public IActionResult Shop402()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Shop402(Data402 data)
+        {
+            User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
+            data.ShopId = user.ShopId;
+            db.data402.Add(data);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Shop401");
+        }
+
         // GET: ShopsController/Details/5
         public ActionResult Details(int id)
         {

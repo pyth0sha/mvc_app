@@ -1,0 +1,98 @@
+@model mvc_app.Models.Data204
+@{
+    ViewBag.Title = "Ц.204 ввод";
+}
+
+
+<form asp-action="Shop204" asp-controller="Shops">
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Сырье</th>
+                <th></th>
+                <th>Норма</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.NAK)</td>
+                <td><input type="text" asp-for="NAK" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.BagPolyprop)</td>
+                <td><input type="text" asp-for="BagPolyprop" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.LabelsPolyprop)</td>
+                <td><input type="text" asp-for="LabelsPolyprop" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.ContainerMKR)</td>
+                <td><input type="text" asp-for="ContainerMKR" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.CausticSoda)</td>
+                <td><input type="text" asp-for="CausticSoda" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Hydroxinon)</td>
+                <td><input type="text" asp-for="Hydroxinon" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Laprol)</td>
+                <td><input type="text" asp-for="Laprol" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Natrium)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="Natrium"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Metanol)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="Metanol"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.SulphAcid)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="SulphAcid"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.PMF)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="PMF"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Calcium)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="Calcium"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.LiquidAmmiak)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="LiquidAmmiak"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.MA)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="MA"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.SulphAmonium)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="SulphAmonium"></td>
+                <td>0.00072</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-light" />
+    </div>
+
+</form>

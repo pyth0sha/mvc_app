@@ -1,0 +1,72 @@
+@model mvc_app.Models.Data402
+@{
+    ViewBag.Title = "Ц.402 ввод";
+}
+
+
+<form asp-action="Shop402" asp-controller="Shops">
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Сырье</th>
+                <th></th>
+                <th>Норма</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.NitronD)</td>
+                <td><input type="text" asp-for="NitronD" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.SorbitanC)</td>
+                <td><input type="text" asp-for="SorbitanC" class="form-control form-control-sm" /></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.SorbitalC20)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="SorbitalC20"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.NitroAcid)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="NitroAcid"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.PMS300)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="PMS300"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Synthezin)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="Synthezin"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Titan)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="Titan"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.PAND)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="PAND"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.VoloknoD)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="VoloknoD"></td>
+                <td>0.00072</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.VoloknoTexJ)</td>
+                <td><input class="form-control form-control-sm" id="role" asp-for="VoloknoTexJ"></td>
+                <td>0.00072</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-light" />
+    </div>
+</form>
