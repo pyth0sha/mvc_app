@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace mvc_app.Migrations
 {
@@ -59,6 +60,7 @@ namespace mvc_app.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ShopId = table.Column<int>(type: "int", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     BenzinLight = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     BenzinHard = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Reflux = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -251,13 +253,67 @@ namespace mvc_app.Migrations
                     ShopId = table.Column<int>(type: "int", nullable: true),
                     Propilen = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Angidrid = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Laprol = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Hydroxinon = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Laprol = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Natrium = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    AceticAcid = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Triphosphat = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Hydrozin = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SulfAcid = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    PMF = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Ammiak = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Aceton = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    NitricAcid = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    NatriumEdk = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    WoodCoal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Amonii = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Aerosil = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    NitroKalium = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    NitroNatrium = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    LiquidAmmiak = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Vismuth = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    IronPowder = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    OrtophoAcid = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_data201", x => x.Id);
                     table.ForeignKey(
                         name: "FK_data201_Shops_ShopId",
+                        column: x => x.ShopId,
+                        principalTable: "Shops",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "data204",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ShopId = table.Column<int>(type: "int", nullable: true),
+                    NAK = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    BagPolyprop = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    LabelsPolyprop = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ContainerMKR = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CausticSoda = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Hydroxinon = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Laprol = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Natrium = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Metanol = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SulphAcid = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    PMF = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Calcium = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    LiquidAmmiak = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    MA = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SulphAmonium = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_data204", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_data204_Shops_ShopId",
                         column: x => x.ShopId,
                         principalTable: "Shops",
                         principalColumn: "Id",
@@ -273,13 +329,51 @@ namespace mvc_app.Migrations
                     ShopId = table.Column<int>(type: "int", nullable: true),
                     NAK = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     MA = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Natrii = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Filterpanel = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Biaz = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Natrii = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SulphAcid = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Prophor = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Dimethil = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    AppleAcid = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    AMPS = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SodaCalc = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    NitronD = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_data401", x => x.Id);
                     table.ForeignKey(
                         name: "FK_data401_Shops_ShopId",
+                        column: x => x.ShopId,
+                        principalTable: "Shops",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "data402",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ShopId = table.Column<int>(type: "int", nullable: true),
+                    NitronD = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SorbitanC = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SorbitalC20 = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    NitroAcid = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    PMS300 = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Synthezin = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Titan = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    PAND = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    VoloknoD = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    VoloknoTexJ = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_data402", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_data402_Shops_ShopId",
                         column: x => x.ShopId,
                         principalTable: "Shops",
                         principalColumn: "Id",
@@ -397,8 +491,18 @@ namespace mvc_app.Migrations
                 column: "ShopId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_data204_ShopId",
+                table: "data204",
+                column: "ShopId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_data401_ShopId",
                 table: "data401",
+                column: "ShopId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_data402_ShopId",
+                table: "data402",
                 column: "ShopId");
 
             migrationBuilder.CreateIndex(
@@ -441,7 +545,13 @@ namespace mvc_app.Migrations
                 name: "data201");
 
             migrationBuilder.DropTable(
+                name: "data204");
+
+            migrationBuilder.DropTable(
                 name: "data401");
+
+            migrationBuilder.DropTable(
+                name: "data402");
 
             migrationBuilder.DropTable(
                 name: "Users");

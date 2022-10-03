@@ -10,7 +10,8 @@ namespace mvc_app.Models
         public int? ShopId { get; set; }
         public Shop Shop { get; set; }
 
-        //[Required]
+        public DateTime CreatedAt {get; set;}
+
         [Display(Name = "Бензин легкий")]
         [Column(TypeName = "decimal(18,2)")]
         public decimal BenzinLight { get; set; }
@@ -78,6 +79,25 @@ namespace mvc_app.Models
         [Display(Name = "Отходы")]
         [Column(TypeName = "decimal(18,2)")]
         public decimal Waste { get; set; }
+
+        public void Calculate(){
+            var EthProp = this.Ethylene + this.Propylene;
+            var UVS = this.BenzinLight + this.BenzinHard + this.Reflux;
+
+            this.Kerosin = 0.00095m * EthProp;
+            this.Natrium = 0.00194m * EthProp;
+            this.Metanol = 0.000234m * EthProp;
+            this.Agidol = 0.0004m * EthProp;
+            this.Ingibitor = 0.000257m * EthProp;
+            this.FractionC4 = 0.24039m * EthProp;
+            this.FractionPropan = 0.055335m * EthProp;
+            this.FractionPyrolize = 0.4928m * EthProp;
+            this.SPT = 0.122576m * EthProp;
+            this.MVF = 0.444772m * EthProp;
+            this.Waste = 0.02m * UVS;
+
+            this.CreatedAt = DateTime.Now;
+        }
 
     }
 }

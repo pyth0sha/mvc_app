@@ -10,7 +10,7 @@ using mvc_app.Models;
 namespace mvc_app.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220929133505_Initial")]
+    [Migration("20221003073651_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,6 +39,9 @@ namespace mvc_app.Migrations
 
                     b.Property<decimal>("Butan")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<decimal>("Ethylene")
                         .HasColumnType("decimal(18,2)");
@@ -358,10 +361,58 @@ namespace mvc_app.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<decimal>("AceticAcid")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Aceton")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Aerosil")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Ammiak")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Amonii")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<decimal>("Angidrid")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<decimal>("Hydroxinon")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Hydrozin")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("IronPowder")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<decimal>("Laprol")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("LiquidAmmiak")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Natrium")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("NatriumEdk")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("NitricAcid")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("NitroKalium")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("NitroNatrium")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("OrtophoAcid")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PMF")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("Propilen")
@@ -370,11 +421,85 @@ namespace mvc_app.Migrations
                     b.Property<int?>("ShopId")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("SulfAcid")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Triphosphat")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Vismuth")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("WoodCoal")
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ShopId");
 
                     b.ToTable("data201");
+                });
+
+            modelBuilder.Entity("mvc_app.Models.Data204", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("BagPolyprop")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Calcium")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("CausticSoda")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("ContainerMKR")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Hydroxinon")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("LabelsPolyprop")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Laprol")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("LiquidAmmiak")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("MA")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Metanol")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("NAK")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Natrium")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PMF")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("ShopId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("SulphAcid")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("SulphAmonium")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ShopId");
+
+                    b.ToTable("data204");
                 });
 
             modelBuilder.Entity("mvc_app.Models.Data401", b =>
@@ -383,6 +508,21 @@ namespace mvc_app.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("AMPS")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("AppleAcid")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Biaz")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Dimethil")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Filterpanel")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("MA")
                         .HasColumnType("decimal(18,2)");
@@ -393,14 +533,73 @@ namespace mvc_app.Migrations
                     b.Property<decimal>("Natrii")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<decimal>("NitronD")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Prophor")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<int?>("ShopId")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("SodaCalc")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("SulphAcid")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ShopId");
 
                     b.ToTable("data401");
+                });
+
+            modelBuilder.Entity("mvc_app.Models.Data402", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("NitroAcid")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("NitronD")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PAND")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PMS300")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("ShopId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("SorbitalC20")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("SorbitanC")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Synthezin")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Titan")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("VoloknoD")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("VoloknoTexJ")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ShopId");
+
+                    b.ToTable("data402");
                 });
 
             modelBuilder.Entity("mvc_app.Models.Department", b =>
@@ -669,7 +868,25 @@ namespace mvc_app.Migrations
                     b.Navigation("Shop");
                 });
 
+            modelBuilder.Entity("mvc_app.Models.Data204", b =>
+                {
+                    b.HasOne("mvc_app.Models.Shop", "Shop")
+                        .WithMany()
+                        .HasForeignKey("ShopId");
+
+                    b.Navigation("Shop");
+                });
+
             modelBuilder.Entity("mvc_app.Models.Data401", b =>
+                {
+                    b.HasOne("mvc_app.Models.Shop", "Shop")
+                        .WithMany()
+                        .HasForeignKey("ShopId");
+
+                    b.Navigation("Shop");
+                });
+
+            modelBuilder.Entity("mvc_app.Models.Data402", b =>
                 {
                     b.HasOne("mvc_app.Models.Shop", "Shop")
                         .WithMany()

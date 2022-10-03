@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SmartBreadcrumbs.Attributes;
+using System;
 
 namespace mvc_app.Controllers
 {
@@ -45,6 +46,7 @@ namespace mvc_app.Controllers
         {
             User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
             data.ShopId = user.ShopId;
+            data.Calculate();
             db.data101.Add(data);
             await db.SaveChangesAsync();
             return RedirectToAction("Shop101");
