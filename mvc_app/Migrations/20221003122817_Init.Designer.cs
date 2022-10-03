@@ -10,8 +10,8 @@ using mvc_app.Models;
 namespace mvc_app.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20221003073651_Initial")]
-    partial class Initial
+    [Migration("20221003122817_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -99,6 +99,9 @@ namespace mvc_app.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<decimal>("Ethylene1")
                         .HasColumnType("decimal(18,2)");
 
@@ -164,6 +167,9 @@ namespace mvc_app.Migrations
                     b.Property<decimal>("Butan")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<decimal>("DimetilSulfid")
                         .HasColumnType("decimal(18,2)");
 
@@ -223,6 +229,9 @@ namespace mvc_app.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<decimal>("Ethylene1")
                         .HasColumnType("decimal(18,2)");
 
@@ -278,6 +287,9 @@ namespace mvc_app.Migrations
 
                     b.Property<decimal>("BagPolyprop")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<decimal>("PlenkaWaste")
                         .HasColumnType("decimal(18,2)");

@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -8,6 +9,8 @@ namespace mvc_app.Models
         public int Id { get; set; }
         public int? ShopId { get; set; }
         public Shop Shop { get; set; }
+
+        public DateTime CreatedAt {get; set;}
 
         [Display(Name = "Полиэтилен сырец 1-ой очереди")]
         [Column(TypeName = "decimal(18,2)")]
@@ -44,5 +47,19 @@ namespace mvc_app.Models
         [Display(Name = "Отходы полипропиленовых мешков тип Е-2")]
         [Column(TypeName = "decimal(18,2)")]
         public decimal PlenkaWasteE2 { get;set; }
+
+        public void Calculation()
+        {
+            this.PolyethyleneS1 = 1.0m * this.Polyethylene1;
+            this.BagPolyprop = 40.950154m * this.Polyethylene1;
+            this.PolyWasteA2 = 0.00009m * this.Polyethylene1;
+            this.PolyWasteB = 0.00023m * this.Polyethylene1;
+            this.PolyWasteA4 = 0.00067m * this.Polyethylene1;
+            this.PolyWasteD = 0.00017m * this.Polyethylene1;
+            this.PlenkaWaste = 0.0003m * this.Polyethylene1;
+            this.PlenkaWasteE2 = 0.0001m * this.Polyethylene1;
+
+            this.CreatedAt = DateTime.Now;
+        }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -8,6 +9,8 @@ namespace mvc_app.Models
         public int Id { get; set; }
         public int? ShopId { get; set; }
         public Shop Shop { get; set; }
+
+        public DateTime CreatedAt {get; set;}
 
         [Display(Name = "Бензин легкий")]
         [Column(TypeName = "decimal(18,2)")]
@@ -80,5 +83,26 @@ namespace mvc_app.Models
         [Display(Name = "Отходы")]
         [Column(TypeName = "decimal(18,2)")]
         public decimal Waste { get; set; }
+
+        public void Calculate()
+        {
+            var EthProp = this.Ethylene + this.Propylene;
+            var UVS = this.BenzinLight + this.BenzinHard + this.Reflux + this.Butan;
+
+            this.Kerosin = 0.00098m * EthProp;
+            this.Natrium = 0.0019m * EthProp;
+            this.Metanol = 0.00045m * EthProp;
+            this.Agidol = 0.0004m * EthProp;
+            this.Ingibitor = 0.000235m * EthProp;
+            this.DimetilSulfid = 0.0001m * EthProp;
+            this.FractionC4 = 0.26151m * EthProp;
+            this.FractionPropan = 0.083544m * EthProp;
+            this.FractionPyrolize = 0.279137m * EthProp;
+            this.SPT = 0.094515m * EthProp;
+            this.MVF = 0.435162m * EthProp;
+            this.Waste = 0.02m * UVS;
+
+            this.CreatedAt = DateTime.Now;
+        }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace mvc_app.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -97,6 +97,7 @@ namespace mvc_app.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ShopId = table.Column<int>(type: "int", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Ethylene1 = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     InitDTBP = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     InitBU50AL = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -128,6 +129,7 @@ namespace mvc_app.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ShopId = table.Column<int>(type: "int", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     BenzinLight = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     BenzinHard = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Reflux = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -165,6 +167,7 @@ namespace mvc_app.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ShopId = table.Column<int>(type: "int", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Ethylene1 = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Ethylene2 = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     InitDTBP = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -196,6 +199,7 @@ namespace mvc_app.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ShopId = table.Column<int>(type: "int", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PolyethyleneS1 = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     BagPolyprop = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Polyethylene1 = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
