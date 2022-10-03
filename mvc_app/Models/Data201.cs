@@ -1,8 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Reflection;
-using System.Xml.Linq;
 
 namespace mvc_app.Models
 {
@@ -11,6 +9,8 @@ namespace mvc_app.Models
         public int Id { get; set; }
         public int? ShopId { get; set; }
         public Shop Shop { get; set; }
+
+        public DateTime CreatedAt {get; set;}
 
         [Display(Name = "Пропилен 1 и 2 очередей на НАК")]
         [Column(TypeName = "decimal(18,2)")]

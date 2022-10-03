@@ -48,7 +48,7 @@ namespace mvc_app.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal PlenkaWasteE2 { get;set; }
 
-        public void Calculation()
+        public void Calculate()
         {
             this.PolyethyleneS1 = 1.0m * this.Polyethylene1;
             this.BagPolyprop = 40.950154m * this.Polyethylene1;

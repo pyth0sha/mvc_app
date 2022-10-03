@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -8,6 +9,8 @@ namespace mvc_app.Models
         public int Id { get; set; }
         public int? ShopId { get; set; }
         public Shop Shop { get; set; }
+
+        public DateTime CreatedAt {get; set;}
 
         [Display(Name = "НАК")]
         [Column(TypeName = "decimal(18,2)")]
@@ -61,6 +64,7 @@ namespace mvc_app.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal LiquidAmmiak { get; set; }
 
+        // основной ввод
         [Display(Name = "МА")]
         [Column(TypeName = "decimal(18,2)")]
         public decimal MA { get; set; }
@@ -68,5 +72,25 @@ namespace mvc_app.Models
         [Display(Name = "Сульфат амония")]
         [Column(TypeName = "decimal(18,2)")]
         public decimal SulphAmonium { get; set; }
+
+        public void Calculate()
+        {
+            this.NAK = 0.848m * this.MA;
+            this.BagPolyprop = 18.5455m * this.MA;
+            this.LabelsPolyprop = 19.954545m * this.MA;
+            this.ContainerMKR = 0.811688m * this.MA;
+            this.CausticSoda = 0.000812m * this.MA;
+            this.Hydroxinon = 0.0018m * this.MA;
+            this.Laprol = 0.0003447m * this.MA;
+            this.Natrium = 0.01m * this.MA;
+            this.Metanol = 0.73m * this.MA;
+            this.SulphAcid = 2.145m * this.MA;
+            this.PMF = 0.0013m * this.MA;
+            this.Calcium = 0.0037m * this.MA;
+            this.LiquidAmmiak = 0.421362m * this.MA;
+            this.SulphAmonium = 2.344156m * this.MA;
+            
+            this.CreatedAt = DateTime.Now;
+        }
     }
 }

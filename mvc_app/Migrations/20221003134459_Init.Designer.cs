@@ -10,7 +10,7 @@ using mvc_app.Models;
 namespace mvc_app.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20221003122817_Init")]
+    [Migration("20221003134459_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -332,6 +332,9 @@ namespace mvc_app.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<decimal>("PlenkaWaste")
                         .HasColumnType("decimal(18,2)");
 
@@ -390,6 +393,9 @@ namespace mvc_app.Migrations
 
                     b.Property<decimal>("Angidrid")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<decimal>("Hydroxinon")
                         .HasColumnType("decimal(18,2)");
@@ -470,6 +476,9 @@ namespace mvc_app.Migrations
 
                     b.Property<decimal>("ContainerMKR")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<decimal>("Hydroxinon")
                         .HasColumnType("decimal(18,2)");

@@ -228,6 +228,7 @@ namespace mvc_app.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ShopId = table.Column<int>(type: "int", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PolyethyleneS2 = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Polyethylene2 = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     PolyWasteA2 = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -255,6 +256,7 @@ namespace mvc_app.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ShopId = table.Column<int>(type: "int", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Propilen = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Angidrid = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Hydroxinon = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -297,6 +299,7 @@ namespace mvc_app.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ShopId = table.Column<int>(type: "int", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     NAK = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     BagPolyprop = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     LabelsPolyprop = table.Column<decimal>(type: "decimal(18,2)", nullable: false),

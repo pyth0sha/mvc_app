@@ -118,6 +118,7 @@ namespace mvc_app.Controllers
         {
             User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
             data.ShopId = user.ShopId;
+            data.Calculate();
             db.data106_1.Add(data);
             await db.SaveChangesAsync();
             return RedirectToAction("Shop106_1");
@@ -135,6 +136,7 @@ namespace mvc_app.Controllers
         {
             User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
             data.ShopId = user.ShopId;
+            data.Calculate();
             db.data106_2.Add(data);
             await db.SaveChangesAsync();
             return RedirectToAction("Shop106_1");
@@ -169,6 +171,7 @@ namespace mvc_app.Controllers
         {
             User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
             data.ShopId = user.ShopId;
+            data.Calculate();
             db.data204.Add(data);
             await db.SaveChangesAsync();
             return RedirectToAction("Shop204");
