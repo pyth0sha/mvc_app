@@ -8,10 +8,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
+using SmartBreadcrumbs.Attributes;
 
 namespace mvc_app.Controllers
 {
     [Authorize(Roles ="admin")]
+    
     public class AdminController : Controller
     {
         private ApplicationContext db;
@@ -25,6 +27,7 @@ namespace mvc_app.Controllers
 
         // TODO:
         // move roles management to roles controller
+        [Breadcrumb("Пользователи", FromAction="Index", FromController=typeof(HomeController))]
         public async Task<IActionResult> UserList(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
             ViewData["CurrentSort"] = sortOrder;           
@@ -58,6 +61,7 @@ namespace mvc_app.Controllers
             return View(await PaginatedList<User>.CreateAsync(users, pageNumber ?? 1, pageSize));
         }
 
+        [Breadcrumb("Добавить", FromAction="UserList")]
         public async Task<IActionResult> Create()
         {
             var CurrentUser = User.Identity.Name;
@@ -85,6 +89,7 @@ namespace mvc_app.Controllers
             return RedirectToAction("UserList");
         }
 
+        [Breadcrumb("Изменить", FromAction="UserList")]
         public async Task<IActionResult> Edit(int? id)
         {
             var CurrentUser = User.Identity.Name;
@@ -118,6 +123,7 @@ namespace mvc_app.Controllers
 
         [HttpGet]
         [ActionName("Delete")]
+        [Breadcrumb("Удалить", FromAction="UserList")]
         public async Task<IActionResult> ConfirmDelete(int? id)
         {
             var CurrentUser = User.Identity.Name;
@@ -146,13 +152,6 @@ namespace mvc_app.Controllers
                 return RedirectToAction("UserList");   
             }
             return NotFound();
-        }
-
-        
-
-        public async Task<IActionResult> Department()
-        {
-            return View(await db.Departments.ToListAsync());
         }
     }
 }

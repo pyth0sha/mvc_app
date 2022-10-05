@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using SmartBreadcrumbs.Attributes;
+using mvc_app.ViewModels;
 
 namespace mvc_app.Controllers
 {
     [DefaultBreadcrumb("Главная")]
     public class HomeController : Controller
     {
+        List<Department> deps;
+        List<Shop> shops;
         private ApplicationContext db;
         public HomeController(ApplicationContext context)
         {
@@ -33,7 +36,13 @@ namespace mvc_app.Controllers
                 ViewBag.Role = role.Name;
             }
 
-            return View(await db.Departments.ToListAsync());
+            deps = await db.Departments.ToListAsync();
+            shops = await db.Shops.ToListAsync();
+
+            HomeIndexViewModel ivm = new HomeIndexViewModel {Departments = deps, Shops = shops};
+            return View(ivm);
+
+            // return View(await db.Departments.ToListAsync());
         }
 
         [Breadcrumb("Отдел")]

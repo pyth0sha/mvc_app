@@ -8,10 +8,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
+using SmartBreadcrumbs.Attributes;
 
 namespace mvc_app.Controllers
 {
     [Authorize(Roles = "admin")]
+    
     public class RolesController : Controller
     {
         private ApplicationContext db;
@@ -22,12 +24,15 @@ namespace mvc_app.Controllers
             db = context;
             _logger = logger;
         }
+
+        [Breadcrumb("Роли", FromAction="Index", FromController=typeof(HomeController))]
         public async Task<IActionResult> Index()
         {
             ViewBag.Role = "admin";
             return View(await db.Roles.ToListAsync());
         }
 
+        [Breadcrumb("Добавить", FromAction="Index")]
         public IActionResult Create()
         {
             ViewBag.Role = "admin";
@@ -35,6 +40,7 @@ namespace mvc_app.Controllers
         }
 
         [HttpPost]
+        
         public async Task<IActionResult> Create(Role role)
         {
             var CurrentUser = User.Identity.Name;
@@ -50,8 +56,10 @@ namespace mvc_app.Controllers
 
         [HttpGet]
         [ActionName("Delete")]
+        [Breadcrumb("Удалить", FromAction="Index")]
         public async Task<IActionResult> ConfirmDelete(int? id)
         {
+            ViewBag.Role = "admin";
             var CurrentUser = User.Identity.Name;
             _logger.LogInformation("Roles.ConfirmDelete method called\nUser: {0}", CurrentUser);
             if (id != null)
@@ -64,6 +72,7 @@ namespace mvc_app.Controllers
         }
 
         [HttpPost]
+
         public async Task<IActionResult> Delete(int? id)
         {
             var CurrentUser = User.Identity.Name;

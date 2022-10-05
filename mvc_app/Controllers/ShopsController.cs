@@ -8,10 +8,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using SmartBreadcrumbs.Attributes;
 using System;
+using SmartBreadcrumbs.Nodes;
 
 namespace mvc_app.Controllers
 {
-    [Breadcrumb("Цех")]
+    //[Breadcrumb("Отдел")]
     public class ShopsController : Controller
     {
         private ApplicationContext db;
@@ -23,15 +24,25 @@ namespace mvc_app.Controllers
             _logger = logger;
         }
 
-        [Route("Shops/List")]
-        public async Task<IActionResult> Index(int? id)
-        {
+        [Route("Shops/Edit")]
+        [Breadcrumb("Цех", FromAction="Index", FromController=typeof(HomeController))]
+        public async Task<IActionResult> Index(int? id, bool? dataEntered)
+        {   
             User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
+            Role role = await db.Roles.FirstOrDefaultAsync(p => p.Id == user.RoleId);
+            ViewBag.Role = role.Name;
             if (id != null)
             {
                 int Id = id.GetValueOrDefault();
                 var shopActions = new List<string> {"Shop101", "Shop102","Shop104","Shop105","Shop106_1","Shop106_2","Shop201","Shop204","Shop401","Shop402"};
                 //return RedirectToAction(shopActions[Id-1]);
+                // if(dataEntered == true)
+                // {
+                //     switch(id)
+                //     {
+                //         case 1:
+                //     }
+                // }
                 return View(shopActions[Id-1]);
             }
             return View();
@@ -103,76 +114,7 @@ namespace mvc_app.Controllers
             }
             
             await db.SaveChangesAsync();
-            return RedirectToAction("Index", new {id=shopId});
-        }
-
-        // GET: ShopsController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: ShopsController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: ShopsController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: ShopsController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: ShopsController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: ShopsController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: ShopsController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index", new {id=shopId, dataEntered=true});
         }
     }
 }
