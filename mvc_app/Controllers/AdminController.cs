@@ -25,8 +25,6 @@ namespace mvc_app.Controllers
             _logger = logger;
         }
 
-        // TODO:
-        // move roles management to roles controller
         [Breadcrumb("Пользователи", FromAction="Index", FromController=typeof(HomeController))]
         public async Task<IActionResult> UserList(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {

@@ -35,6 +35,7 @@ namespace mvc_app.Controllers
             {
                 int Id = id.GetValueOrDefault();
                 var shopActions = new List<string> {"Shop101", "Shop102","Shop104","Shop105","Shop106_1","Shop106_2","Shop201","Shop204","Shop401","Shop402"};
+                
                 //return RedirectToAction(shopActions[Id-1]);
                 // if(dataEntered == true)
                 // {
