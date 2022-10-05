@@ -3,13 +3,13 @@
     ViewBag.Title = "Ц.101 ввод";
 }
 <p>Ввод данных</p>
-<form asp-action="Shop101" asp-controller="Shops">
+<form asp-action="Proceed" asp-controller="Shops">
     <table class="table table-sm">
         <thead>
             <tr>
                 <th>Сырье</th>
                 <th></th>
-                <th>Норма</th>
+                <th>Норма <a href="#">Изменить</a> </th>
             </tr>
         </thead>
         <tbody>
@@ -46,7 +46,7 @@
             <!-- Остальные поля рассчитываются -->
             <tr>
                 <td>@Html.DisplayNameFor(model=>model.Kerosin)</td>
-                <td><input type="text" asp-for="Kerosin" class="form-control form-control-sm" /></td>
+                <td><input type="text" asp-for="Kerosin" class="form-control form-control-sm" disabled/></td>
                 <td>0.00095</td>
             </tr>
             <tr>
