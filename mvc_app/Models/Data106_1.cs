@@ -48,6 +48,34 @@ namespace mvc_app.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal PlenkaWasteE2 { get;set; }
 
+
+        // ввод данных (т) для пленка
+        [Display(Name = "Пленка полиэтиленовая")]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal PlenkaPoly { get;set; }
+
+        [Display(Name = "Отходы при пр-ве пленки тБ")]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal PlenkaWastePlenka { get;set; }
+
+        [Display(Name = "Полиэтилен 1-ой очереди")]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal Polyethylene1Plenka { get;set; }
+
+
+        // ввод данных (т) для мешки
+        [Display(Name = "Мешок полиэтиленовый (тыс. шт.)")]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal BagPoly { get;set; }
+
+        [Display(Name = "Отходы при пр-ве пленки тБ")]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal BagWastePlenka { get;set; }
+
+        [Display(Name = "Полиэтилен 1-ой очереди")]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal Polyethylene1Bag { get;set; }
+
         public void Calculate()
         {
             this.PolyethyleneS1 = 1.0m * this.Polyethylene1;
@@ -58,6 +86,12 @@ namespace mvc_app.Models
             this.PolyWasteD = 0.00017m * this.Polyethylene1;
             this.PlenkaWaste = 0.0003m * this.Polyethylene1;
             this.PlenkaWasteE2 = 0.0001m * this.Polyethylene1;
+
+            this.PlenkaWastePlenka = 0.0000045m * this.PlenkaPoly;
+            this.Polyethylene1Plenka = 1.005m* this.PlenkaPoly;
+
+            this.BagWastePlenka = 0.0000018m * this.BagPoly;
+            this.Polyethylene1Bag = 0.2092m* this.BagPoly;
 
             this.CreatedAt = DateTime.Now;
         }
