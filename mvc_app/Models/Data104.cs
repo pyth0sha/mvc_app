@@ -12,6 +12,10 @@ namespace mvc_app.Models
 
         public DateTime CreatedAt {get; set;}
 
+        [Display(Name = "УВС (общее количество)")]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal UVS {get; set;} 
+
         [Display(Name = "Бензин легкий")]
         [Column(TypeName = "decimal(18,2)")]
         public decimal BenzinLight { get; set; }
@@ -87,7 +91,7 @@ namespace mvc_app.Models
         public void Calculate()
         {
             var EthProp = this.Ethylene + this.Propylene;
-            var UVS = this.BenzinLight + this.BenzinHard + this.Reflux + this.Butan;
+            this.UVS = this.BenzinLight + this.BenzinHard + this.Reflux + this.Butan;
 
             this.Kerosin = 0.00098m * EthProp;
             this.Natrium = 0.0019m * EthProp;

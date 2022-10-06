@@ -9,8 +9,12 @@ namespace mvc_app.Models
         public int Id { get; set; }
         public int? ShopId { get; set; }
         public Shop Shop { get; set; }
-
+        
         public DateTime CreatedAt {get; set;}
+
+        [Display(Name = "УВС (общее количество)")]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal UVS {get; set;} 
 
         [Display(Name = "Бензин легкий")]
         [Column(TypeName = "decimal(18,2)")]
@@ -80,9 +84,10 @@ namespace mvc_app.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal Waste { get; set; }
 
-        public void Calculate(){
+        public void Calculate()
+        {
             var EthProp = this.Ethylene + this.Propylene;
-            var UVS = this.BenzinLight + this.BenzinHard + this.Reflux;
+            this.UVS = this.BenzinLight + this.BenzinHard + this.Reflux;
 
             this.Kerosin = 0.00095m * EthProp;
             this.Natrium = 0.00194m * EthProp;
@@ -94,10 +99,9 @@ namespace mvc_app.Models
             this.FractionPyrolize = 0.4928m * EthProp;
             this.SPT = 0.122576m * EthProp;
             this.MVF = 0.444772m * EthProp;
-            this.Waste = 0.02m * UVS;
+            this.Waste = 0.02m * this.UVS;
 
             this.CreatedAt = DateTime.Now;
         }
-
     }
 }

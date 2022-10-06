@@ -40,6 +40,7 @@ namespace mvc_app.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal Titan { get; set; }
 
+        // основной ввод
         [Display(Name = "Волокно ПАН Д")]
         [Column(TypeName = "decimal(18,2)")]
         public decimal PAND { get; set; }
@@ -51,5 +52,20 @@ namespace mvc_app.Models
         [Display(Name = "Волокно техническое Ж")]
         [Column(TypeName = "decimal(18,2)")]
         public decimal VoloknoTexJ { get; set; }
+
+        public void Calculate()
+        {
+            this.NitronD = 1.0m * this.PAND;
+            this.SorbitanC = 0.0051m * this.PAND;
+            this.SorbitalC20 = 0.0017m * this.PAND;
+            this.NitroAcid = 0.000001m * this.PAND;
+            this.PMS300 = 0.00008m * this.PAND;
+            this.Synthezin = 0.00097m * this.PAND;
+            this.Titan = 0.00076m * this.PAND;
+            this.VoloknoD = 0.207222m * this.PAND;
+            this.VoloknoTexJ = 0.004m * this.PAND;
+
+            this.CreatedAt = DateTime.Now;
+        }
     }
 }

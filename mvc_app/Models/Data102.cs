@@ -62,8 +62,6 @@ namespace mvc_app.Models
 
         public void Calculate()
         {
-            this.CreatedAt = DateTime.Now;
-
             this.Ethylene1 = 1.038m * this.PolyethyleneS1;
             this.InitDTBP = 0.000043m * this.PolyethyleneS1;
             this.InitBU50AL = 0.00317m * this.PolyethyleneS1;
@@ -75,6 +73,8 @@ namespace mvc_app.Models
             this.PolyWasteA2 = 0.00057m * this.PolyethyleneS1;
             this.PolyWasteB = 0.000380m * this.PolyethyleneS1;
             this.PolyWasteA4 = 0.00005m * this.PolyethyleneS1;
+
+            this.CreatedAt = DateTime.Now;
         }
     }
 }

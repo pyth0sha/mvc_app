@@ -58,8 +58,26 @@ namespace mvc_app.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal SodaCalc { get; set; }
 
+        // основной ввод
         [Display(Name = "Нитрон Д")]
         [Column(TypeName = "decimal(18,2)")]
         public decimal NitronD { get; set; }
+
+        public void Calculate()
+        {
+            this.NAK = 0.922m * this.NitronD;
+            this.MA = 0.0853m * this.NitronD;
+            this.Filterpanel = 0.011111m * this.NitronD;
+            this.Biaz = 0.0015m * this.NitronD;
+            this.Natrii = 0.145m * this.NitronD;
+            this.SulphAcid = 0.0156m * this.NitronD;
+            this.Prophor = 0.0011m * this.NitronD;
+            this.Dimethil = 0.022m * this.NitronD;
+            this.AppleAcid = 0.00068m * this.NitronD;
+            this.AMPS = 0.0128m * this.NitronD;
+            this.SodaCalc = 0.00333m * this.NitronD;
+
+            this.CreatedAt = DateTime.Now;
+        }
     }
 }

@@ -105,5 +105,10 @@ namespace mvc_app.Models
         public decimal OrtophoAcid { get; set; }
 
         // НАК АЦН Кислота синильная АЦГ Катализатор ??
+
+        public void Calculate()
+        {
+            
+        }
     }
 }

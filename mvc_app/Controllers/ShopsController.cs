@@ -105,12 +105,12 @@ namespace mvc_app.Controllers
             }
             else if(data401 != null){
                 data401.ShopId = user.ShopId;
-                //data401.Calculate();
+                data401.Calculate();
                 db.data401.Add(data401);
             }
             else if(data402 != null){
                 data402.ShopId = user.ShopId;
-                //data402.Calculate();
+                data402.Calculate();
                 db.data402.Add(data402);
             }
             
