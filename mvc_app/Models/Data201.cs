@@ -105,10 +105,56 @@ namespace mvc_app.Models
         public decimal OrtophoAcid { get; set; }
 
         // НАК АЦН Кислота синильная АЦГ Катализатор ??
+        // основной ввод?
+        [Display(Name = "НАК")]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal NAK { get; set; }
+
+        [Display(Name = "НАК товар")] // ввод?
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal NAKtovar { get; set; }
+
+        [Display(Name = "НАК полуфаб.")] // ввод?
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal NAKpolufab { get; set; }
+
+        [Display(Name = "АЦГ")]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal ACG { get; set; }
+
+        [Display(Name = "Катализатор А-112 на НАК")]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal Katalizator { get; set; }
 
         public void Calculate()
         {
-            
+            this.Angidrid = 0.0072m * this.NAK;
+            this.Hydroxinon = 0.00018m * this.NAK;
+            this.Laprol = 0.00018m * this.NAK;
+            this.Natrium = 0.010843m * this.NAK;
+            this.AceticAcid = 0.003402m * this.NAK;
+            this.Triphosphat = 0.0000125m * this.NAK;
+            this.Hydrozin = 0.000006m * this.NAK;
+            this.SulfAcid = 0.1m * this.NAK;
+            this.Ammiak = 0.558879m * this.NAK;
+
+            this.PMF = 0.000045m * this.NAKtovar + 0.000032m * this.NAKpolufab;
+
+            this.Aceton = 0.702m * this.ACG;
+
+            this.NitricAcid = 0.785714m * this.Katalizator;
+            this.NatriumEdk = 0.4576m * this.Katalizator;
+            this.WoodCoal = 0.0001m * this.Katalizator;
+            this.Amonii = 0.3813m * this.Katalizator;
+            this.Aerosil = 0.7253m * this.Katalizator;
+            this.NitroKalium = 0.00098m * this.Katalizator;
+            this.NitroNatrium = 0.0012m * this.Katalizator;
+            this.LiquidAmmiak = 0.01m * this.Katalizator;
+            this.Vismuth = 0.145m * this.Katalizator;
+            this.IronPowder = 0.28m * this.Katalizator;
+            this.OrtophoAcid = 0.0175m * this.Katalizator;
+
+            this.CreatedAt = DateTime.Now;
         }
     }
 }
