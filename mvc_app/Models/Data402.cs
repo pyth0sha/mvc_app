@@ -53,6 +53,11 @@ namespace mvc_app.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal VoloknoTexJ { get; set; }
 
+        // комплект упаковочный
+        [Display(Name = "Комплект упаковочный")]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal PackagingKit { get; set; }
+
         public void Calculate()
         {
             this.NitronD = 1.0m * this.PAND;

@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SmartBreadcrumbs.Extensions;
+using Microsoft.AspNetCore.Authentication;
 
 namespace mvc_app
 {
@@ -29,7 +30,6 @@ namespace mvc_app
         public void ConfigureServices(IServiceCollection services)
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
-            // ��������� �������� ApplicationContext � �������� ������� � ����������
             services.AddDbContext<ApplicationContext>(options =>
                 options.UseSqlServer(connection));
 
@@ -38,6 +38,8 @@ namespace mvc_app
                 {
                     options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
                 });
+
+            // services.AddSingleton<IClaimsTransformation, ClaimsTransformer>();
 
             services.AddControllersWithViews();
             services.AddHttpContextAccessor();

@@ -1,18 +1,16 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using mvc_app.Models;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using SmartBreadcrumbs.Attributes;
-using System;
-using SmartBreadcrumbs.Nodes;
+using Microsoft.AspNetCore.Authorization;
 
 namespace mvc_app.Controllers
 {
     //[Breadcrumb("Отдел")]
+    [Authorize]
     public class ShopsController : Controller
     {
         private ApplicationContext db;

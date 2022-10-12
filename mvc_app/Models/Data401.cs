@@ -29,7 +29,6 @@ namespace mvc_app.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal Biaz { get; set; }
 
-
         [Display(Name = "Натрий едкий технический")]
         [Column(TypeName = "decimal(18,2)")]
         public decimal Natrii { get; set; }
@@ -62,6 +61,19 @@ namespace mvc_app.Models
         [Display(Name = "Нитрон Д")]
         [Column(TypeName = "decimal(18,2)")]
         public decimal NitronD { get; set; }
+
+        // вода
+        [Display(Name = "Вода обессоленная (1000м3)")]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal Water { get; set; }
+
+        [Display(Name = "Натрий едкий технический")]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal NatriiWater { get; set; }
+        
+        [Display(Name = "Кислота серная техническая")]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal SulphAcidWater { get; set; }
 
         public void Calculate()
         {
