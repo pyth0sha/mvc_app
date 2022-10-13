@@ -89,6 +89,9 @@ namespace mvc_app.Models
             this.AMPS = 0.0128m * this.NitronD;
             this.SodaCalc = 0.00333m * this.NitronD;
 
+            this.NatriiWater = 1.3199809m * this.Water;
+            this.SulphAcidWater = 2.089969758m * this.Water;
+
             this.CreatedAt = DateTime.Now;
         }
     }

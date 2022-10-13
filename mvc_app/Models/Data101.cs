@@ -88,6 +88,8 @@ namespace mvc_app.Models
         {
             var EthProp = this.Ethylene + this.Propylene;
             this.UVS = this.BenzinLight + this.BenzinHard + this.Reflux;
+            var Total = this.Kerosin + this.Natrium + this.Metanol + this.Agidol + this.Ingibitor;
+            var TotalUVS = this.UVS + Total;
 
             this.Kerosin = 0.00095m * EthProp;
             this.Natrium = 0.00194m * EthProp;

@@ -2,10 +2,6 @@
 
 namespace mvc_app.Models
 {
-    // класс отдела
-    // TODO:
-    // [+] добавить отношение к цеху List<Shop>
-    // [] 
     public class Department
     {
         public int Id { get; set; }
