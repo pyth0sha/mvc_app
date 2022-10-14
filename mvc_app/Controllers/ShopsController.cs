@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using SmartBreadcrumbs.Attributes;
 using Microsoft.AspNetCore.Authorization;
+using System.Linq;
 
 namespace mvc_app.Controllers
 {
@@ -33,15 +34,6 @@ namespace mvc_app.Controllers
             {
                 int Id = id.GetValueOrDefault();
                 var shopActions = new List<string> {"Shop101", "Shop102","Shop104","Shop105","Shop106_1","Shop106_2","Shop201","Shop204","Shop401","Shop402"};
-                
-                //return RedirectToAction(shopActions[Id-1]);
-                // if(dataEntered == true)
-                // {
-                //     switch(id)
-                //     {
-                //         case 1:
-                //     }
-                // }
                 return View(shopActions[Id-1]);
             }
             return View();
@@ -114,6 +106,13 @@ namespace mvc_app.Controllers
             
             await db.SaveChangesAsync();
             return RedirectToAction("Index", new {id=shopId, dataEntered=true});
+        }
+
+        public async Task<IActionResult> ShopHistory(int? id, int? pageNumber)
+        {
+            var data = from s in db.data101 select s;
+            int pageSize = 1;
+            return View(await PaginatedList<Data101>.CreateAsync(data, pageNumber ?? 1, pageSize));
         }
     }
 }
