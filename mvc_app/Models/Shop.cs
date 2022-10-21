@@ -10,9 +10,5 @@ namespace mvc_app.Models
         public int? DepartmentId { get; set; }
         public Department Department { get; set; }
         public List<User> Users {get; set;} = new List<User>();
-
-        public Data101 data101;
-        public Data201 data201;
-        public Data401 data401;
     }
 }

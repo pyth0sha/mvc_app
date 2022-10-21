@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -75,6 +76,19 @@ namespace mvc_app.Models
             this.PolyWasteA4 = 0.00005m * this.PolyethyleneS1;
 
             this.CreatedAt = DateTime.Now;
+        }
+
+        public List<string> GetPropertiesNameOfClass(object pObject)
+        {
+            List<string> propertyList = new List<string>();
+            if (pObject != null)
+            {
+                foreach (var prop in pObject.GetType().GetProperties())
+                {
+                    propertyList.Add(prop.Name);
+                }
+            }
+            return propertyList;
         }
     }
 }

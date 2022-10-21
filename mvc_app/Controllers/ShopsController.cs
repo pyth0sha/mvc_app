@@ -52,54 +52,63 @@ namespace mvc_app.Controllers
                                             Data402 data402)
         {
             User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
-            var shopId = user.ShopId;
+            int? shopId = 0;
             if(data101 != null){
-                data101.ShopId = user.ShopId;
+                data101.ShopId = 1;
+                shopId = data101.ShopId;
                 data101.Calculate();
                 db.data101.Add(data101);
             }
             else if(data102 != null){
-                data102.ShopId = user.ShopId;
+                data102.ShopId = 2;
+                shopId = data102.ShopId;
                 data102.Calculate();
                 db.data102.Add(data102);
             }
             else if(data104 != null){
-                data104.ShopId = user.ShopId;
+                data104.ShopId = 3;
+                shopId = data104.ShopId;
                 data104.Calculate();
                 db.data104.Add(data104);
             }
             else if(data105 != null){
-                data105.ShopId = user.ShopId;
+                data105.ShopId = 4;
+                shopId = data105.ShopId;
                 data105.Calculate();
                 db.data105.Add(data105);
             }
             else if(data106_1 != null){
-                data106_1.ShopId = user.ShopId;
+                data106_1.ShopId = 5;
+                shopId = data106_1.ShopId;
                 data106_1.Calculate();
                 db.data106_1.Add(data106_1);
             }
             else if(data106_2 != null){
-                data106_2.ShopId = user.ShopId;
+                data106_2.ShopId = 6;
+                shopId = data106_2.ShopId;
                 data106_2.Calculate();
                 db.data106_2.Add(data106_2);
             }
             else if(data201 != null){
-                data201.ShopId = user.ShopId;
+                data201.ShopId = 7;
                 //data201.Calculate();
                 db.data201.Add(data201);
             }
             else if(data204 != null){
-                data204.ShopId = user.ShopId;
+                data204.ShopId = 8;
+                shopId = data204.ShopId;
                 data204.Calculate();
                 db.data204.Add(data204);
             }
             else if(data401 != null){
-                data401.ShopId = user.ShopId;
+                data401.ShopId = 9;
+                shopId = data401.ShopId;
                 data401.Calculate();
                 db.data401.Add(data401);
             }
             else if(data402 != null){
-                data402.ShopId = user.ShopId;
+                data402.ShopId = 10;
+                shopId = data402.ShopId;
                 data402.Calculate();
                 db.data402.Add(data402);
             }
@@ -113,6 +122,12 @@ namespace mvc_app.Controllers
             var data = from s in db.data101 select s;
             int pageSize = 1;
             return View(await PaginatedList<Data101>.CreateAsync(data, pageNumber ?? 1, pageSize));
+        }
+
+        public ViewResult Test()
+        {
+            Data102 data = new Data102{};
+            return View(data);
         }
     }
 }
