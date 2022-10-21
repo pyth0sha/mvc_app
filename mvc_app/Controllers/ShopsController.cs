@@ -47,8 +47,8 @@ namespace mvc_app.Controllers
         [HttpPost]
         public async Task<IActionResult> Shop101(Data101 data)
         {
-            User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
-            data.ShopId = user.ShopId;
+            // User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
+            data.ShopId = 1;
             data.Calculate();
             db.data101.Add(data);
             await db.SaveChangesAsync();
@@ -58,8 +58,8 @@ namespace mvc_app.Controllers
         [HttpPost]
         public async Task<IActionResult> Shop102(Data102 data)
         {
-            User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
-            data.ShopId = user.ShopId;
+            // User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
+            data.ShopId = 2;
             data.Calculate();
             db.data102.Add(data);
             await db.SaveChangesAsync();
@@ -69,8 +69,8 @@ namespace mvc_app.Controllers
         [HttpPost]
         public async Task<IActionResult> Shop104(Data104 data)
         {
-            User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
-            data.ShopId = user.ShopId;
+            // User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
+            data.ShopId = 3;
             data.Calculate();
             db.data104.Add(data);
             await db.SaveChangesAsync();
@@ -80,8 +80,8 @@ namespace mvc_app.Controllers
         [HttpPost]
         public async Task<IActionResult> Shop105(Data105 data)
         {
-            User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
-            data.ShopId = user.ShopId;
+            // User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
+            data.ShopId = 4;
             data.Calculate();
             db.data105.Add(data);
             await db.SaveChangesAsync();
@@ -91,8 +91,8 @@ namespace mvc_app.Controllers
         [HttpPost]
         public async Task<IActionResult> Shop106_1(Data106_1 data)
         {
-            User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
-            data.ShopId = user.ShopId;
+            // User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
+            data.ShopId = 5;
             data.Calculate();
             db.data106_1.Add(data);
             await db.SaveChangesAsync();
@@ -102,8 +102,8 @@ namespace mvc_app.Controllers
         [HttpPost]
         public async Task<IActionResult> Shop106_2(Data106_2 data)
         {
-            User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
-            data.ShopId = user.ShopId;
+            // User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
+            data.ShopId = 6;
             data.Calculate();
             db.data106_2.Add(data);
             await db.SaveChangesAsync();
@@ -114,7 +114,7 @@ namespace mvc_app.Controllers
         public async Task<IActionResult> Shop201(Data201 data)
         {
             // User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
-            // data.ShopId = user.ShopId;
+            // data.ShopId = 7;
             // data.Calculate();
             // db.data201.Add(data);
             // await db.SaveChangesAsync();
@@ -124,8 +124,8 @@ namespace mvc_app.Controllers
         [HttpPost]
         public async Task<IActionResult> Shop204(Data204 data)
         {
-            User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
-            data.ShopId = user.ShopId;
+            // User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
+            data.ShopId = 8;
             data.Calculate();
             db.data204.Add(data);
             await db.SaveChangesAsync();
@@ -135,8 +135,8 @@ namespace mvc_app.Controllers
         [HttpPost]
         public async Task<IActionResult> Shop401(Data401 data)
         {
-            User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
-            data.ShopId = user.ShopId;
+            // User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
+            data.ShopId = 9;
             data.Calculate();
             db.data401.Add(data);
             await db.SaveChangesAsync();
@@ -146,8 +146,8 @@ namespace mvc_app.Controllers
         [HttpPost]
         public async Task<IActionResult> Shop402(Data402 data)
         {
-            User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
-            data.ShopId = user.ShopId;
+            // User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
+            data.ShopId = 10;
             data.Calculate();
             db.data402.Add(data);
             await db.SaveChangesAsync();
