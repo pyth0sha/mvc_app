@@ -19,18 +19,25 @@ namespace mvc_app.Controllers
         {
             db = context;
         }
+        /// <summary>
+        /// Представление входа в приложение
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
+        /// <summary>
+        /// Метод для проверки данных входа
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel model)
         {
-            // метод для входа в систему
-
             if (ModelState.IsValid)
             {
                 User user = await db.Users.Include(u => u.Role)
@@ -50,11 +57,22 @@ namespace mvc_app.Controllers
             }
             return View(model);
         }
+
+        /// <summary>
+        /// Регистрация в системе
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
+
+        /// <summary>
+        /// Проверка данных регистрации и добавление в бд
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterModel model)
@@ -89,6 +107,11 @@ namespace mvc_app.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// Аутентификация
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         private async Task Authenticate(User user)
         {
             // аутентификация пользователя
@@ -106,6 +129,10 @@ namespace mvc_app.Controllers
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
 
+        /// <summary>
+        /// Выход их приложения
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         public async Task<IActionResult> Logout()
         {

@@ -25,6 +25,14 @@ namespace mvc_app.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Список зарегестрированных пользователей
+        /// </summary>
+        /// <param name="sortOrder"></param>
+        /// <param name="currentFilter"></param>
+        /// <param name="searchString"></param>
+        /// <param name="pageNumber"></param>
+        /// <returns></returns>
         [Breadcrumb("Пользователи", FromAction="Index", FromController=typeof(HomeController))]
         public async Task<IActionResult> UserList(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
@@ -59,6 +67,10 @@ namespace mvc_app.Controllers
             return View(await PaginatedList<User>.CreateAsync(users, pageNumber ?? 1, pageSize));
         }
 
+        /// <summary>
+        /// Форма создания нового пользователя 
+        /// </summary>
+        /// <returns></returns>
         [Breadcrumb("Добавить", FromAction="UserList")]
         public async Task<IActionResult> Create()
         {
@@ -73,6 +85,12 @@ namespace mvc_app.Controllers
             ViewBag.Role = "admin";
             return View();
         }
+
+        /// <summary>
+        /// Создает нового пользователя, добавляет в бд
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Create(User user)
         {
@@ -87,6 +105,11 @@ namespace mvc_app.Controllers
             return RedirectToAction("UserList");
         }
 
+        /// <summary>
+        /// Форма редактирования пользователя
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Breadcrumb("Изменить", FromAction="UserList")]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -106,6 +129,12 @@ namespace mvc_app.Controllers
             }
             return NotFound();
         }
+
+        /// <summary>
+        /// Редактирует пользователя, обновляет бд
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Edit(User user)
         {
@@ -119,6 +148,11 @@ namespace mvc_app.Controllers
             return RedirectToAction("UserList");
         }
 
+        /// <summary>
+        /// Форма удаления пользователя
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         [ActionName("Delete")]
         [Breadcrumb("Удалить", FromAction="UserList")]
@@ -135,6 +169,11 @@ namespace mvc_app.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Удаляет пользователя
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Delete(int? id)
         {

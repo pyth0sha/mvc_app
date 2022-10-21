@@ -24,11 +24,12 @@ namespace mvc_app.Controllers
             db = context;
         }
 
+        /// <summary>
+        /// Главная страница приложения, отображает список цехов
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Index()
         {
-            // главная страница для обычных пользователей
-            // содержит список отделов
-
             User user = await db.Users.FirstOrDefaultAsync(p => p.Number == User.Identity.Name);
             if (user != null)
             {
@@ -45,7 +46,7 @@ namespace mvc_app.Controllers
             // return View(await db.Departments.ToListAsync());
         }
 
-        [Breadcrumb("Отдел")]
+        // [Breadcrumb("Отдел")]
         public async Task<IActionResult> Department(int? id)
         {
             // страница отдела, содержит список цехов

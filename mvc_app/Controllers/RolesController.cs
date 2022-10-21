@@ -25,6 +25,10 @@ namespace mvc_app.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Показывает список ролей
+        /// </summary>
+        /// <returns></returns>
         [Breadcrumb("Роли", FromAction="Index", FromController=typeof(HomeController))]
         public async Task<IActionResult> Index()
         {
@@ -32,6 +36,10 @@ namespace mvc_app.Controllers
             return View(await db.Roles.ToListAsync());
         }
 
+        /// <summary>
+        /// Форма добавления роли
+        /// </summary>
+        /// <returns></returns>
         [Breadcrumb("Добавить", FromAction="Index")]
         public IActionResult Create()
         {
@@ -39,8 +47,12 @@ namespace mvc_app.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Добавляет новую роль
+        /// </summary>
+        /// <param name="role"></param>
+        /// <returns></returns>
         [HttpPost]
-        
         public async Task<IActionResult> Create(Role role)
         {
             var CurrentUser = User.Identity.Name;
@@ -54,6 +66,11 @@ namespace mvc_app.Controllers
             return RedirectToAction("Index", "Roles");
         }
 
+        /// <summary>
+        /// Форма удаления роли
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         [ActionName("Delete")]
         [Breadcrumb("Удалить", FromAction="Index")]
@@ -71,8 +88,12 @@ namespace mvc_app.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Удаляет роль
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost]
-
         public async Task<IActionResult> Delete(int? id)
         {
             var CurrentUser = User.Identity.Name;
